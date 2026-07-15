@@ -82,6 +82,7 @@
         },
         "hero_iTjnjC": {
           "type": "hero",
+          "disabled": true,
           "settings": {
             "top_subheading": "",
             "title": "",
