@@ -1,0 +1,168 @@
+<style>
+  /* Overall section styling */
+  #shopify-section-{{ section.id }} .ultravit-section {
+    padding: 60px 20px;
+    background-color: {{ section.settings.section_bg_color }};
+  }
+
+  /* Main grid container */
+  .ultravit-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    max-width: 1300px;
+    margin: 0 auto;
+    height: 596px; 
+  }
+
+  /* Left Text Block Styling */
+  .text-block {
+    background-color: {{ section.settings.text_box_bg_color }};
+    color: {{ section.settings.text_color }};
+    padding: 24px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly; 
+    height: 100%;
+  }
+
+  .text-block h2 {
+    font-size: 36px; 
+    font-weight: 700;
+    margin-bottom: 25px;
+    color: inherit;
+    line-height: 1.2;
+  }
+
+  .text-block-content p {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: inherit;
+  }
+  
+  .text-block-content p:last-child {
+    margin-bottom: 0;
+  }
+
+  /* Right Image Block Styling */
+  .image-block {
+    border-radius: 12px;
+    overflow: hidden;
+    height: 100%; 
+  }
+
+  .image-block img {
+    width: 100%;
+    height: 100%;
+    object-fit: fill; 
+    display: block;
+    
+  }
+
+  /* Mobile Responsive Styling */
+  @media (max-width: 768px) {
+    .ultravit-container {
+      grid-template-columns: 1fr;
+      height: auto; 
+    }
+
+    .text-block {
+      padding: 20px; 
+      text-align: center;
+    }
+
+    .text-block h2 {
+      font-size: 24px;
+    }
+    .text-block p {
+      font-size: 16px;
+    }
+  }
+</style>
+
+<div class="ultravit-section">
+  <div class="ultravit-container">
+    
+    <div class="text-block">
+      {% if section.settings.heading != blank %}
+        <h2>{{ section.settings.heading }}</h2>
+      {% endif %}
+      {% if section.settings.content != blank %}
+        <div class="text-block-content">
+          {{ section.settings.content }}
+        </div>
+      {% endif %}
+    </div>
+
+    <div class="image-block">
+      {% if section.settings.image != blank %}
+        <img src="{{ section.settings.image | image_url: width: 800 }}" 
+             alt="{{ section.settings.heading | escape }}" 
+             loading="lazy">
+      {% else %}
+        {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+      {% endif %}
+    </div>
+
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Ultravit Difference",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "section_bg_color",
+      "label": "Section Background Color",
+      "default": "#F9F9F9"
+    },
+    {
+      "type": "color",
+      "id": "text_box_bg_color",
+      "label": "Text Box Background Color",
+      "default": "#FF7933"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "header",
+      "content": "Text Block Content"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "The Ultravit Difference"
+    },
+    {
+      "type": "richtext",
+      "id": "content",
+      "label": "Text Content",
+    },
+    {
+      "type": "header",
+      "content": "Image Block Content"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Composite Image"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Ultravit Difference"
+    }
+  ]
+}
+{% endschema %}

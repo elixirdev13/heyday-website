@@ -1,0 +1,233 @@
+<style>
+.why-choose-heyday {
+  background: #0E4638;
+  color: white;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.wch-heading {
+  font-size: 32px;
+  margin-bottom: 50px;
+  font-weight: 800;
+}
+
+/* FEATURE ROWS */
+.wch-features-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  margin-bottom: 60px;
+}
+
+.bottom-row {
+  grid-template-columns: repeat(2, 1fr);
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.wch-feature-item {
+  text-align: center;
+  
+}
+
+.wch-icon {
+  width: 60px;
+  height: 60px;
+  margin-bottom: 15px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.wch-icon-placeholder {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: white;
+  margin: 0 auto 15px;
+}
+
+.wch-feature-title {
+  font-weight: 700;
+  margin-bottom: 8px;
+  font-size: 16px;
+}
+
+.wch-feature-text {
+  line-height: normal;
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+/* IMAGE BOXES */
+.wch-image-boxes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content:center;
+  gap:32px;
+}
+
+.wch-image-box {
+  position: relative;
+  width: 100%;
+  max-width: 350px; /* adjust width as needed */
+  height: 300px;    /* adjust height as needed */
+  border-radius: 12px;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.wch-img-caption {
+  position: relative;
+  background: rgba(0, 0, 0, 0.30);
+  width: 100%;
+  height: 100%;
+  color: #fff;
+  border-radius: 6px;
+  font-size: 22px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content:center;
+}
+
+
+@media (max-width: 768px) {
+  .wch-heading { font-size: 26px; }
+
+  .wch-features-row {
+    grid-template-columns: 1fr;
+  }
+
+  .bottom-row {
+    grid-template-columns: 1fr;
+    max-width: 100%;
+  }
+  .wch-image-box{
+    max-width: 0px;
+  }
+}
+</style>
+
+
+<section class="why-choose-heyday">
+  <div class="container">
+
+    {% if section.settings.heading != blank %}
+      <h2 class="wch-heading">{{ section.settings.heading }}</h2>
+    {% endif %}
+
+    <!-- TOP ROW: 3 FEATURE ICONS -->
+    <div class="wch-features-row">
+      {% for block in section.blocks limit:3 %}
+        {% if block.type == 'feature' %}
+          <div class="wch-feature-item">
+            {% if block.settings.icon != blank %}
+              <img src="{{ block.settings.icon | image_url: width: 80 }}" alt="" class="wch-icon">
+            {% else %}
+              <div class="wch-icon-placeholder"></div>
+            {% endif %}
+            <h3 class="wch-feature-title">{{ block.settings.title }}</h3>
+            <p class="wch-feature-text">{{ block.settings.text }}</p>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+
+    <!-- BOTTOM ROW: NEXT 2 FEATURE ICONS -->
+    <div class="wch-features-row bottom-row">
+      {% for block in section.blocks offset:3 limit:2 %}
+        {% if block.type == 'feature' %}
+          <div class="wch-feature-item">
+            {% if block.settings.icon != blank %}
+              <img src="{{ block.settings.icon | image_url: width: 80 }}" alt="" class="wch-icon">
+            {% else %}
+              <div class="wch-icon-placeholder"></div>
+            {% endif %}
+            <h3 class="wch-feature-title">{{ block.settings.title }}</h3>
+            <p class="wch-feature-text">{{ block.settings.text }}</p>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+
+    <!-- BOTTOM IMAGE BOXES -->
+    <div class="wch-image-boxes">
+      {% for block in section.blocks %}
+        {% if block.type == 'image_box' %}
+          <div class="wch-image-box" 
+              style="
+                {% if block.settings.image != blank %}
+                  background-image: url('{{ block.settings.image | image_url: width: 800 }}');
+                {% endif %}
+              ">
+            <div class="wch-img-caption">{{ block.settings.caption }}</div>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+
+
+  </div>
+</section>
+
+
+{% schema %}
+{
+  "name": "Why Choose Heyday Section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Section Heading",
+      "default": "Why Choose Heyday for Christmas Gifting?"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Feature Icon Item",
+      "settings": [
+        { "type": "image_picker", "id": "icon", "label": "Icon" },
+        { "type": "text", "id": "title", "label": "Title" },
+        { "type": "textarea", "id": "text", "label": "Description" }
+      ]
+    },
+    {
+      "type": "image_box",
+      "name": "Image Box",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Image" },
+        { "type": "text", "id": "caption", "label": "Caption" }
+      ]
+    }
+  ],
+  "max_blocks": 10,
+  "presets": [
+    {
+      "name": "Why Choose Heyday",
+      "blocks": [
+        { "type": "feature" },
+        { "type": "feature" },
+        { "type": "feature" },
+        { "type": "feature" },
+        { "type": "feature" },
+        { "type": "image_box" },
+        { "type": "image_box" },
+        { "type": "image_box" }
+      ]
+    }
+  ]
+}
+{% endschema %}

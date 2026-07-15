@@ -1,0 +1,160 @@
+<style>
+  #shopify-section-{{ section.id }} .quiz-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px 0px 0px 50px;
+    background-color: #FFFFFA;
+  }
+
+  #shopify-section-{{ section.id }} .quiz-section__content {
+    max-width: 50%;
+  }
+
+  #shopify-section-{{ section.id }} .quiz-section__title {
+    font-size: 2em;
+    font-weight: 400;
+    margin-bottom: 30px;
+    color: #164734;
+    font-family: "MajesticKingdome";
+    line-height: 53.56px;
+  }
+
+  #shopify-section-{{ section.id }} .quiz-section__list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 30px 0;
+  }
+
+  #shopify-section-{{ section.id }} .quiz-section__list-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    font-size: 1.2em;
+    color: #333;
+  }
+
+  #shopify-section-{{ section.id }} .quiz-section__icon {
+    width: 25px;
+    height: 25px;
+    background-color: #EED774;
+    border-radius: 50%;
+    margin-right: 10px;
+    flex-shrink: 0;
+    border: 1px solid #EED774;
+
+  }
+
+  #shopify-section-{{ section.id }} .quiz-section__button {
+    display: inline-block;
+    background-color: #164734;
+    color: white;
+    padding: 10px 24px;
+    text-decoration: none;
+    border-radius: 22px;
+    font-size: 1.1em;
+    transition: background-color 0.3s ease-in-out;
+  }
+
+  #shopify-section-{{ section.id }} .quiz-section__button:hover {
+    background-color: #45a049;
+  }
+
+  #shopify-section-{{ section.id }} .quiz-section__image {
+    max-width: {{ section.settings.image_max_width }}%;
+    text-align: center;
+  }
+
+  #shopify-section-{{ section.id }} .quiz-section__image img {
+    width: 100%;
+    height: auto;
+  }
+
+  @media (max-width: 768px) {
+    #shopify-section-{{ section.id }} .quiz-section {
+      flex-direction: column;
+      text-align: center;
+    }
+    #shopify-section-{{ section.id }} .quiz-section__content,
+    #shopify-section-{{ section.id }} .quiz-section__image {
+      max-width: 100%;
+    }
+  }
+</style>
+
+<div class="quiz-section">
+  <div class="quiz-section__content">
+    <h2 class="quiz-section__title">{{ section.settings.title }}</h2>
+    <ul class="quiz-section__list">
+      {% for block in section.blocks %}
+        <li class="quiz-section__list-item">
+          <div class="quiz-section__icon"></div>
+          {{ block.settings.text }}
+        </li>
+      {% endfor %}
+    </ul>
+    <a href="{{ section.settings.cta_link }}" class="quiz-section__button">{{ section.settings.cta_text }}</a>
+  </div>
+  <div class="quiz-section__image">
+    <img src="{{ section.settings.image | img_url: '600x' }}" alt="Quiz Image">
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Quiz Banner",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "Help us understand what you're looking for"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Right-side Image"
+    },
+    {
+      "type": "range",
+      "id": "image_max_width",
+      "label": "Image Max Width (%)",
+      "default": 45,
+      "min": 10,
+      "max": 100,
+      "step": 1
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "CTA Button Text",
+      "default": "Take the Quiz"
+    },
+    {
+      "type": "url",
+      "id": "cta_link",
+      "label": "CTA Button Link"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "text_block",
+      "name": "Bullet Point",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "Let us in on your current lifestyle and preferences"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Quiz Banner",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}

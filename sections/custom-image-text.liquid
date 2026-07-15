@@ -1,0 +1,75 @@
+<section class="specs-overview" data-section-id="{{ section.id }}">
+  <div class="specs-overview__wrapper" style="display: flex; flex-wrap: wrap; align-items: flex-start;">
+    <!-- LEFT COLUMN: IMAGE -->
+    <div class="specs-overview__image" style="flex: 1 1 40%; padding-right: 1rem;">
+      {% if section.settings.image %}
+        <img
+          src="{{ section.settings.image | img_url: 'master' }}"
+          srcset="{{ section.settings.image | img_url: '1600x' }} 1600w,
+                  {{ section.settings.image | img_url: '800x' }} 800w,
+                  {{ section.settings.image | img_url: '400x' }} 400w"
+          sizes="(min-width: 800px) 40vw, 80vw"
+          alt="{{ section.settings.image.alt | escape }}"
+          style="width: 100%; height: auto; object-fit: cover;"
+        />
+      {% endif %}
+    </div>
+
+    <!-- RIGHT COLUMN: HEADING + SPECS LIST -->
+    <div class="specs-overview__content" style="flex: 1 1 60%; padding-left: 1rem;">
+      {% if section.settings.heading != blank %}
+        <h2 class="specs-overview__heading" style="margin-bottom: 0.75rem; font-size: 1.5rem;">
+          {{ section.settings.heading }}
+        </h2>
+      {% endif %}
+
+      <ul class="specs-overview__list" style="list-style: none; padding: 0;">
+        {% for block in section.blocks %}
+          <li class="specs-overview__item" style="margin-bottom: 0.5rem;">
+            {{ block.settings.spec_text }}
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Custom Text Image",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Left-side Image"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Section Heading",
+      "default": "Specs Overview"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "spec",
+      "name": "Single Spec Line",
+      "settings": [
+        {
+          "type": "text",
+          "id": "spec_text",
+          "label": "Spec Text",
+          "default": "New spec goes here"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 10,
+  "presets": [
+    {
+      "name": "Custom Text Image",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}

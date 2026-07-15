@@ -1,0 +1,285 @@
+<style>
+  /* --- Section Styling --- */
+  #shopify-section-{{ section.id }} .custom-testimonial-section {
+    background-color: {{ section.settings.bg_color }};
+    padding: 80px 20px;
+    overflow: hidden; /* Hides cards when they move off-screen */
+    position: relative;
+  }
+
+  .testimonial-heading {
+    text-align: center;
+    color: {{ section.settings.heading_color }};
+    font-size: 42px;
+    font-weight: 700;
+    margin-bottom: 60px;
+    z-index: 2;
+    position: relative;
+  }
+
+  /* --- Carousel Container --- */
+  .carousel-container {
+    position: relative;
+    max-width: 1500px;
+    margin: 0 auto;
+    height: 400px; /* Fixed height to contain absolute cards */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    perspective: 1000px; /* Creates the 3D depth */
+  }
+
+  /* --- Individual Card Styling --- */
+  .testimonial-card {
+    position: absolute;
+    width: 450px;
+    background: #fff;
+    padding: 40px 30px;
+    border-radius: 4px;
+    text-align: center;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    transition: all 0.5s ease-in-out; /* Smooth movement */
+    cursor: pointer;
+    
+    /* Default State (Hidden/Behind) */
+    opacity: 0;
+    z-index: 0;
+    transform: translateX(0) scale(0.8);
+  }
+
+  /* --- States handled by JS --- */
+  
+  /* Active Card (Center) */
+  .testimonial-card.active {
+    opacity: 1;
+    z-index: 10;
+    transform: translateX(0) scale(1.1); /* Center and Zoomed In */
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+  }
+
+  /* Left Card */
+  .testimonial-card.prev {
+    opacity: 0.7;
+    z-index: 5;
+    transform: translateX(-110%) scale(0.85); /* Moves Left */
+  }
+
+  /* Right Card */
+  .testimonial-card.next {
+    opacity: 0.7;
+    z-index: 5;
+    transform: translateX(110%) scale(0.85); /* Moves Right */
+  }
+
+  /* Content Styling */
+  .quote-text {
+    font-size: 15px;
+    line-height: 1.5;
+    color: #333;
+    font-weight: 600;
+    font-style: italic;
+    margin-bottom: 25px;
+  }
+
+  .author-image {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 0 auto 15px;
+    display: block;
+    background-color: #eee;
+  }
+
+  .author-name {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 10px;
+    display: block;
+  }
+
+  .star-rating {
+    color: #FFB800;
+    font-size: 18px;
+    letter-spacing: 2px;
+  }
+
+  /* --- Mobile Responsive --- */
+  @media (max-width: 768px) {
+    .testimonial-heading {
+      font-size: 28px;
+    }
+    
+    .carousel-container {
+      height: 380px;
+    }
+
+    .testimonial-card {
+      width: 280px; /* Smaller card on mobile */
+    }
+
+    /* Adjust overlapping distance for mobile */
+    .testimonial-card.prev {
+      transform: translateX(-50%) scale(0.8);
+      opacity: 0.5;
+    }
+    .testimonial-card.next {
+      transform: translateX(50%) scale(0.8);
+      opacity: 0.5;
+    }
+  }
+</style>
+
+<div class="custom-testimonial-section">
+  {% if section.settings.heading != blank %}
+    <h2 class="testimonial-heading">{{ section.settings.heading }}</h2>
+  {% endif %}
+
+  <div class="carousel-container" id="carousel-{{ section.id }}">
+    {% for block in section.blocks %}
+      <div class="testimonial-card" data-index="{{ forloop.index0 }}">
+        <div class="star-rating">
+          ★★★★★
+        </div>
+        
+        <div class="quote-text">
+          {{ block.settings.quote }}
+        </div>
+
+        {% comment %} {% if block.settings.image != blank %}
+          <img src="{{ block.settings.image | image_url: width: 120 }}" 
+               alt="{{ block.settings.author }}" 
+               class="author-image"
+               loading="lazy">
+        {% else %}
+        <div class="author-image" style="background: #ddd; display: flex; align-items: center; justify-content: center;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#777" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+          </div>
+        {% endif %} {% endcomment %}
+
+        <span class="author-name">{{ block.settings.author }}</span>
+
+      </div>
+    {% endfor %}
+  </div>
+
+  <div style="text-align:center; margin-top:20px;">
+    <button onclick="moveCarousel(-1)" style="background:none; border:none; cursor:pointer; font-size:24px; color:white; padding:0 20px;">&#10094;</button>
+    <button onclick="moveCarousel(1)" style="background:none; border:none; cursor:pointer; font-size:24px; color:white; padding:0 20px;">&#10095;</button>
+  </div>
+
+</div>
+
+<script>
+  (function() {
+    const container = document.getElementById('carousel-{{ section.id }}');
+    const cards = Array.from(container.querySelectorAll('.testimonial-card'));
+    let currentIndex = 0; // Start with the first item
+
+    // Function to update classes based on currentIndex
+    function updateCarousel() {
+      cards.forEach((card, index) => {
+        // Reset classes
+        card.className = 'testimonial-card';
+        
+        // Determine position relative to current index
+        if (index === currentIndex) {
+          card.classList.add('active');
+        } else if (index === (currentIndex - 1 + cards.length) % cards.length) {
+          card.classList.add('prev');
+        } else if (index === (currentIndex + 1) % cards.length) {
+          card.classList.add('next');
+        }
+        
+        // Click to activate logic
+        card.onclick = function() {
+          currentIndex = index;
+          updateCarousel();
+          resetTimer();
+        }
+      });
+    }
+
+    // Function to move next/prev
+    window.moveCarousel = function(direction) {
+      currentIndex = (currentIndex + direction + cards.length) % cards.length;
+      updateCarousel();
+      resetTimer();
+    }
+
+    // Auto Play Logic
+    let autoPlayTimer = setInterval(() => {
+      moveCarousel(1);
+    }, 5000); // 5 Seconds
+
+    function resetTimer() {
+      clearInterval(autoPlayTimer);
+      autoPlayTimer = setInterval(() => {
+        moveCarousel(1);
+      }, 5000);
+    }
+
+    // Initialize
+    updateCarousel();
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Testimonial Custom",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Loved By Thousands Worldwide"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#F27D42"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Color",
+      "default": "#FFFFFF"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "testimonial",
+      "name": "Testimonial",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "quote",
+          "label": "Quote"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Author Photo"
+        },
+        {
+          "type": "text",
+          "id": "author",
+          "label": "Author Name/Location"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Testimonial Custom",
+      "category": "Custom",
+      "blocks": [
+        { "type": "testimonial" },
+        { "type": "testimonial" },
+        { "type": "testimonial" }
+      ]
+    }
+  ]
+}
+{% endschema %}

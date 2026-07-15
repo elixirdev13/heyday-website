@@ -1,0 +1,244 @@
+<style>
+    .holiday-hero {
+      position: relative; /* added for overlay */
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      padding: 250px 20px;
+      background-size:cover;
+      background-position:center;
+    }
+
+    /* NEW OVERLAY */
+    .holiday-hero .hero-overlay {
+      position:absolute;
+      inset:0;
+      background:rgba(0,0,0,0.35); /* adjust opacity if needed */
+      pointer-events:none;
+      z-index:1;
+    }
+
+    .holiday-hero .hero-inner{
+      margin:auto;
+      position: relative;
+      z-index:2; /* ensures content stays above overlay */
+    }
+
+    .holiday-hero .hero-title{
+      font-weight:800;
+      margin-bottom:16px;
+      text-shadow: 0 3px 8px rgba(0,0,0,0.6); /* NEW */
+    }
+
+    .holiday-hero .hero-text{
+      max-width: 750px;
+      margin-bottom:28px;
+      margin-left: auto;
+      margin-right:auto;
+      text-shadow: 0 2px 6px rgba(0,0,0,0.5); /* NEW */
+    }
+
+    .holiday-hero .hero-buttons{
+      display:flex;
+      gap:16px;
+      justify-content:center;
+      flex-wrap:wrap;
+    }
+
+    .holiday-hero .btn-primary{
+      background:var(--btn-bg, #164734);
+      color:#fff;
+      padding:12px 28px;
+      border-radius:30px;
+      border:none;
+      cursor:pointer;
+      font-weight:600;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3); /* pop-out */
+    }
+
+    .holiday-hero .btn-outline{
+      background:white;
+      border:1px solid white;
+      color:var(--btn-outline, #164734);
+      padding:12px 28px;
+      border-radius:30px;
+      cursor:pointer;
+      font-weight:600;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3); /* pop-out */
+    }
+
+    @media(max-width:768px){
+      .holiday-hero {
+        padding:60px 20px;
+      }
+      .holiday-hero .btn-outline{
+        padding: 10px 20px;
+      }
+      .holiday-hero .btn-primary{
+      padding:12px 30px;
+      }
+
+    }
+</style>
+
+<div class="holiday-hero" style="position:relative; width:100%;">
+
+  <!-- NEW OVERLAY DIV -->
+  <div class="hero-overlay"></div>
+
+  <div class="hero-inner">
+    <h2 class="hero-title" style="color:{{ section.settings.title_color }}; font-size:{{ section.settings.title_size }}px;">
+      {{ section.settings.title }}
+    </h2>
+
+    <p class="hero-text" style="color:{{ section.settings.text_color }}; font-size:{{ section.settings.text_size }}px;">
+      {{ section.settings.text }}
+    </p>
+
+    <div class="hero-buttons">
+      {% if section.settings.primary_button_label != '' %}
+      <a href="{{ section.settings.primary_button_link }}" class="btn-primary" style="--btn-bg: {{ section.settings.primary_button_color }};">
+        {{ section.settings.primary_button_label }}
+      </a>
+      {% endif %}
+
+      {% if section.settings.secondary_button_label != '' %}
+      <a href="{{ section.settings.secondary_button_link }}" class="btn-outline" style="--btn-outline: {{ section.settings.secondary_button_color }};">
+        {{ section.settings.secondary_button_label }}
+      </a>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const section = document.querySelector('.holiday-hero');
+    const desktop = `{{ section.settings.desktop_bg | img_url: '2000x' }}`;
+    const mobile = `{{ section.settings.mobile_bg | img_url: '800x' }}`;
+
+    function updateBG() {
+      if (window.innerWidth <= 768) {
+        section.style.backgroundImage = `url('${mobile}')`;
+      } else {
+        section.style.backgroundImage = `url('${desktop}')`;
+      }
+    }
+
+    updateBG();
+    window.addEventListener('resize', updateBG);
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Holiday Hero Section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "desktop_bg",
+      "label": "Desktop Background Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile_bg",
+      "label": "Mobile Background Image"
+    },
+    {
+      "type": "header",
+      "content": "Text Settings"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Celebrate Wellness This Christmas"
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Title Color",
+      "default": "#1b1b1b"
+    },
+    {
+      "type": "range",
+      "id": "title_size",
+      "label": "Title Font Size",
+      "min": 20,
+      "max": 60,
+      "step": 1,
+      "default": 36
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Subtitle",
+      "default": "Thoughtfully curated gifts for every kind of holiday celebration — made healthier, fresher, and crafted with natural goodness." 
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#333333"
+    },
+    {
+      "type": "range",
+      "id": "text_size",
+      "label": "Text Font Size",
+      "min": 12,
+      "max": 30,
+      "step": 1,
+      "default": 16
+    },
+    {
+      "type": "header",
+      "content": "Primary Button"
+    },
+    {
+      "type": "text",
+      "id": "primary_button_label",
+      "label": "Primary Button Label",
+      "default": "Shop Holiday Exclusives"
+    },
+    {
+      "type": "url",
+      "id": "primary_button_link",
+      "label": "Primary Button Link"
+    },
+    {
+      "type": "color",
+      "id": "primary_button_color",
+      "label": "Primary Button Background Color",
+      "default": "#164734"
+    },
+    {
+      "type": "header",
+      "content": "Secondary Button"
+    },
+    {
+      "type": "text",
+      "id": "secondary_button_label",
+      "label": "Secondary Button Label",
+      "default": "View Christmas Catalogue"
+    },
+    {
+      "type": "url",
+      "id": "secondary_button_link",
+      "label": "Secondary Button Link"
+    },
+    {
+      "type": "color",
+      "id": "secondary_button_color",
+      "label": "Secondary Button Outline Color",
+      "default": "#164734"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Hero"
+    }
+  ]
+}
+{% endschema %}
+

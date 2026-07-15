@@ -1,0 +1,73 @@
+{% comment %}
+  /**
+   * param {object} block - block object
+   */
+{% endcomment %}
+<style>
+  .underfooter-logo {
+    padding-left: 0px;
+    font-weight: 600;
+    margin-top: 10px;
+  }
+  .social-logo--list {
+    display: flex;
+    gap: 8px;
+  }
+  .social-logo--list > a > img {
+    width: 20px;
+    height: 20px;
+  }
+   @media (max-width:768px){
+    .underfooter-logo {
+     padding-left: 0px;
+    }
+
+
+   }
+</style>
+
+{% if block.settings.link != blank %}
+  <a href="{{ block.settings.link }}">
+{% endif %}
+<div
+  class="image-wrap {% if block.settings.image_mask != 'none' %}svg-mask svg-mask--{{ block.settings.image_mask }}{% endif %}"
+  {% if block.settings.image != blank %}
+    style="height: 0; padding-bottom: {{ 100 | divided_by: block.settings.image.aspect_ratio }}%;"
+  {% endif %}
+>
+  {% if block.settings.image != blank %}
+    {%- render 'image-element',
+      img: block.settings.image,
+      sizeVariable: '210px',
+      widths: '360, 540, 720, 1020',
+      classes: 'footer__image'
+    -%}
+  {% else %}
+    {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+  {% endif %}
+</div>
+{% if block.settings.link != blank %}
+  </a>
+  <div class="underfooter-logo">
+    <p>
+      Address:<br>
+      Ground floor, Glorietta 4 Ayala Mall, Barangay San Lorenzo Makati City
+    </p>
+    <!-- <p>Ayala Malls Manila Bay, Macapagal Boulevard cor. Asean Avenue, Parañaque, Metro Manila</p> -->
+    <p></p>
+    <div class="social-logo--list">
+      <a href="https://www.instagram.com/heydayph_/?hl=en" target="_blank"
+        ><img
+          src="https://cdn.shopify.com/s/files/1/0673/0045/8748/files/Vector.svg?v=1706516985"
+          width="24"
+          height="24"
+      ></a>
+      <a href="https://facebook.com/people/Heyday-Life/100089468100495/" target="_blank"
+        ><img
+          src="https://cdn.shopify.com/s/files/1/0673/0045/8748/files/Vector_9337cdda-ee48-4238-8d7c-ec032680b7ac.svg?v=1706516994"
+          width="24"
+          height="24"
+      ></a>
+    </div>
+  </div>
+{% endif %}

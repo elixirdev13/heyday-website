@@ -1,0 +1,149 @@
+<style>
+.fold-6 {
+  padding: 100px 60px;
+  margin: 0 auto;
+  max-width: 1400px;
+}
+
+.header-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+/* RESPONSIVE GRID (3, 2, or 1 columns automatically) */
+.fold-6-images {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 27px;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+/* Each card */
+.fold-6-card {
+  position: relative;
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  height: 320px;
+  width: 100%;
+  max-width: 395px;
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  text-decoration: none; /* make whole card clickable */
+}
+
+/* Image */
+.fold-6-card img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  inset: 0;
+  z-index: 1;
+  transition: transform 0.5s ease;
+}
+
+.fold-6-card:hover img {
+  transform: scale(1.08);
+}
+
+/* Gradient */
+.fold-6-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.1),
+      rgba(0, 0, 0, 0.55)
+  );
+  z-index: 1;
+}
+
+/* Text centered */
+.card-text {
+  position: relative;
+  top: 10px;
+  z-index: 3;
+  color: #fff;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.card-text-1 {
+  position: relative;
+  top: 10px;
+  z-index: 3;
+  color: #083826;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* Optional: adjust padding for mobile */
+@media (max-width: 600px) {
+  .fold-6 {
+    padding: 60px 20px;
+  }
+}
+</style>
+
+<div class="fold-6">
+  <div class="header-text">
+    <h2>{{ section.settings.header }}</h2>
+    <p>{{ section.settings.subheader }}</p>
+  </div>
+
+  <div class="fold-6-images">
+
+    <!-- CARD 1 -->
+    <a href="{{ section.settings.link1 }}" class="fold-6-card">
+      <img src="{{ section.settings.image-card1 | image_url }}" alt="">
+      <div class="card-text-1">{{ section.settings.title_1 }}</div>
+    </a>
+
+    <!-- CARD 2 -->
+    <a href="{{ section.settings.link2 }}" class="fold-6-card">
+      <img src="{{ section.settings.image-card2 | image_url }}" alt="">
+      <div class="card-text">{{ section.settings.title_2 }}</div>
+    </a>
+
+    <!-- CARD 3 -->
+    <a href="{{ section.settings.link3 }}" class="fold-6-card">
+      <img src="{{ section.settings.image-card3 | image_url }}" alt="">
+      <div class="card-text">{{ section.settings.title_3 }}</div>
+    </a>
+
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Holiday Specials",
+  "settings": [
+    { "type": "text", "label": "Header", "id": "header" },
+    { "type": "text", "label": "Subheader", "id": "subheader" },
+
+    { "type": "image_picker", "label": "Image 1", "id": "image-card1" },
+    { "type": "text", "label": "Title 1", "id": "title_1" },
+    { "type": "url", "label": "Link 1", "id": "link1" },
+
+    { "type": "image_picker", "label": "Image 2", "id": "image-card2" },
+    { "type": "text", "label": "Title 2", "id": "title_2" },
+    { "type": "url", "label": "Link 2", "id": "link2" },
+
+    { "type": "image_picker", "label": "Image 3", "id": "image-card3" },
+    { "type": "text", "label": "Title 3", "id": "title_3" },
+    { "type": "url", "label": "Link 3", "id": "link3" }
+
+  ],
+  "presets": [
+    { "name": "Holiday Specials" }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,139 @@
+<style>
+  .featured-hero-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px 0;
+    height: 500px; /* Adjust this height as needed */
+  }
+
+  .featured-hero-image {
+    flex: 1;
+    height: 100%;
+  }
+
+  .featured-hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    object-position: top;
+  }
+
+  .featured-hero-content {
+    flex: 1;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 30px;
+    background-size: cover;
+    background-position: center;
+    text-align: left;
+  }
+
+  .featured-hero-content h2 {
+    font-size: 2em;
+    font-weight: 400;
+    margin-bottom: 20px;
+    color: #164734;
+    font-family: "MajesticKingdome";
+  }
+
+  .featured-hero-content p {
+    font-size: 18px;
+    margin-bottom: 30px;
+  }
+
+  .hero-button {
+    background-color:#164734;
+    color: #ffffff;
+    width: 180px;
+    text-align: center;
+    padding: 10px 34px 10px 34px;
+    border-radius: 22px;
+  }
+
+
+
+  @media (max-width: 768px) {
+    .featured-hero-section {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .featured-hero-content {
+      padding-left: 20px;
+      padding-top: 30px;
+    }
+    .featured-hero-image {
+      display:none;
+    }
+
+    .featured-hero-image img {
+      width: 100%;
+      height: auto;
+    }
+  }
+</style>
+
+<div class="featured-hero-section">
+  <div class="featured-hero-image">
+    <img src="{{ section.settings.image | img_url: 'master' }}" alt="{{ section.settings.heading }}">
+  </div>
+  <div
+    class="featured-hero-content"
+    style="background-image: url('{{ section.settings.image2 | img_url: '500x500' }}');"
+  >
+    <h2>{{ section.settings.heading }}</h2>
+    <p>{{ section.settings.text }}</p>
+    <a href="{{ section.settings.button_link }}" class="hero-button">{{ section.settings.button_text }}</a>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Custom Featured Hero",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Hero Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image2",
+      "label": "Hero Image"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Heyday Essentials"
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Text",
+      "default": "From essential vitamins to targeted supplements, our in-house line is meticulously formulated to support your well-being journey."
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link",
+      "default": "/collections/all"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "SHOP NOW"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Featured Hero",
+    }
+  ],
+}
+{% endschema %}

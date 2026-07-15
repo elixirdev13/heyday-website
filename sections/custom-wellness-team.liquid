@@ -1,0 +1,162 @@
+<style>
+  .wellness-team-section {
+      text-align: center;
+      padding: 60px 20px;
+      background-color: #f0e9db; /* Adjust this color to match your background */
+      background-image: url('{{ section.settings.section_background_image | image_url }}'); /* Use the background image from schema */
+      background-size: cover;
+      background-position: center;
+  }
+
+  .wellness-team-title {
+      font-size: 2em;
+      font-weight: 400;
+      margin-bottom: 40px;
+      color: #ffffff; /* Adjust to match your theme's color */
+      font-family: "MajesticKingdome";
+  }
+
+  .wellness-team-container {
+      display: flex;
+      justify-content: center;
+      gap: 50px;
+      flex-wrap: wrap;
+  }
+
+  .team-member {
+      background-color: #FDF7EE;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      width: 250px;
+      text-align: center;
+      transition: transform 0.3s ease-in-out;
+      padding: 20px 20px;
+  }
+
+  {% comment %} .team-member:hover {
+      transform: scale(1.05);
+  } {% endcomment %}
+
+  .team-member__image img {
+      width: 100%;
+      height: auto;
+
+  }
+
+  .team-member__info {
+      padding: 20px 0px;
+  }
+
+  .team-member__name {
+      font-size: 1.5em;
+      margin-bottom: 5px;
+      color: #333333;
+      font-weight: 700;
+  }
+
+  .team-member__title {
+      font-size: 1em;
+      color: #333333;
+  }
+
+  .wellness-team-cta {
+      margin-top: 50px;
+  }
+
+  .wellness-team-button {
+      background-color: #164734;
+      color: #fff;
+      padding: 12px 20px;
+      text-decoration: none;
+      border-radius: 22px;
+      font-size: 1.1em;
+      transition: background-color 0.3s ease-in-out;
+  }
+
+  .wellness-team-button:hover {
+      background-color: #164734;
+      color: #fff;
+  }
+</style>
+
+<div class="wellness-team-section">
+  <h2 class="wellness-team-title">{{ section.settings.title }}</h2>
+  <div class="wellness-team-container">
+    {% for block in section.blocks %}
+      <div class="team-member">
+        <div class="team-member__image">
+          <img src="{{ block.settings.image | img_url: '300x300' }}" alt="{{ block.settings.name }}">
+        </div>
+        <div class="team-member__info">
+          <h3 class="team-member__name">{{ block.settings.name }}</h3>
+          <p class="team-member__title">{{ block.settings.title }}</p>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+  <div class="wellness-team-cta">
+    <a href="{{ section.settings.cta_link }}" class="wellness-team-button">{{ section.settings.cta_text }}</a>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Wellness Team",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "Get To Know Our Wellness Team"
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "CTA Button Text",
+      "default": "Schedule a consultation today"
+    },
+    {
+      "type": "url",
+      "id": "cta_link",
+      "label": "CTA Button Link"
+    },
+    {
+      "type": "image_picker",
+      "id": "section_background_image",
+      "label": "Background Section Image"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "team_member",
+      "name": "Team Member",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Team Member Image"
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Team Member Name",
+          "default": "John Doe"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Team Member Title",
+          "default": "Pharmacist"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Wellness Team",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}

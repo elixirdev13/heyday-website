@@ -1,0 +1,102 @@
+{%- assign banner_image = collection.image | default: section.settings.custom_image -%}
+
+<style>
+  #shopify-section-{{ section.id }} .custom-banner-section__title {
+    font-size: 2em;
+    font-weight: 400;
+    margin-bottom: 20px;
+    color: #164734;
+    font-family: "MajesticKingdome";
+    text-align: center;
+  }
+  #shopify-section-{{ section.id }} .custom-banner-section__content {
+    max-width: 1100px;
+    margin: 0 auto;
+    background-color: rgba(255, 255, 255, 0.75);
+    padding: 30px 20px;
+    border-radius: 10px;
+  }
+  #shopify-section-{{ section.id }} .custom-banner-section__background {
+    
+    background-image: url('{{ banner_image | img_url: '1600x' }}');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 50px 20px;
+    text-align: center;
+  }
+  #shopify-section-{{ section.id }} .custom-collection-desc {
+    color: #232323;
+    font-size: 16px;
+  }
+  #shopify-section-{{ section.id }} .custom-collection-desc span {
+    font-size: 18px;
+  }
+  #shopify-section-{{ section.id }} .custom-collection-desc p {
+    font-size: 18px;
+  }
+</style>
+
+{%- render 'section-collection-header',
+  section: section,
+  collection: collection,
+  disable_sticky_header: false,
+  enable: section.settings.enable,
+  collection_image_enable: section.settings.collection_image_enable,
+  parallax: section.settings.parallax,
+  parallax_direction: section.settings.parallax_direction,
+  show_breadcrumbs: settings.show_breadcrumbs,
+  show_breadcrumbs_collection_link: settings.show_breadcrumbs_collection_link,
+  hydration: 'on:idle',
+  custom_image: banner_image 
+-%}
+
+{% schema %}
+{
+  "name": "t:labels.collection_header",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "enable",
+      "label": "t:actions.enable_header",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "collection_image_enable",
+      "label": "t:actions.show_collection_image",
+      "default": false
+    },
+    {
+      "type": "image_picker",
+      "id": "custom_image",
+      "label": "Custom Image Banner",
+      "info": "This image is used if the Collection does not have a featured image."
+    },
+    {
+      "type": "checkbox",
+      "id": "parallax",
+      "label": "t:labels.parallax_image"
+    },
+    {
+      "type": "select",
+      "id": "parallax_direction",
+      "label": "t:labels.parallax_direction",
+      "default": "top",
+      "options": [
+        {
+          "value": "top",
+          "label": "t:labels.vertical"
+        },
+        {
+          "value": "left",
+          "label": "t:labels.horizontal"
+        }
+      ]
+    }
+  ],
+  "disabled_on": {
+    "groups": ["footer", "header", "custom.popups"]
+  }
+}
+{% endschema %}

@@ -1,0 +1,151 @@
+{% assign has_content = false %}
+{% for block in section.blocks %}
+  {% if block.settings.tab_content != '' %}
+    {% assign has_content = true %}
+    {% break %}
+  {% endif %}
+{% endfor %}
+
+{% if has_content %}
+  <style>
+    #shopify-section-{{ section.id }} .tabs {
+      width: 100%;
+      display: block;
+      padding-block: 5rem;
+    }
+
+    #shopify-section-{{ section.id }} .tab-links:after {
+      display: block;
+      clear: both;
+      content: '';
+    }
+
+    #shopify-section-{{ section.id }} .tab-links li {
+      margin: 0px 5px;
+      float: left;
+      list-style: none;
+    }
+    #shopify-section-{{ section.id }} .tab-links {
+       border-bottom: 1px solid #80827E;
+    }
+
+    #shopify-section-{{ section.id }} .tab-links li a {
+      padding: 9px 15px;
+      display: inline-block;
+      border-radius: 3px 3px 0px 0px;
+      background: #f2f2f2;
+      font-size: 18px;
+      font-weight: 600;
+      color: #232323;
+      transition: all linear 0.15s;
+    }
+
+    #shopify-section-{{ section.id }} .tab-links li.active a, .tab-links li a:hover {
+      color: #257756;
+    }
+
+    #shopify-section-{{ section.id }} .tab-content {
+      padding: 15px;
+      border-radius: 3px;
+      background: #fff;
+    }
+
+    #shopify-section-{{ section.id }} .tab {
+      display: none;
+    }
+
+    #shopify-section-{{ section.id }} .tab.active {
+      display: block;
+    }
+  </style>
+
+  <div class="page-width page-width--flush-small">
+    <div class="tabs">
+      <ul class="tab-links">
+        {% for block in section.blocks %}
+          {% if block.settings.tab_content != '' %}
+            <li class="{% if forloop.first %}active{% endif %}">
+              <a href="#{{ block.id }}">{{ block.settings.tab_title }}</a>
+            </li>
+          {% endif %}
+        {% endfor %}
+      </ul>
+
+      <div class="tab-content">
+        {% assign first_tab_rendered = false %}
+        {% for block in section.blocks %}
+          {% if block.settings.tab_content != '' %}
+            <div
+              id="{{ block.id }}"
+              class="tab {% if first_tab_rendered == false %}active{% assign first_tab_rendered = true %}{% endif %}"
+            >
+              {{ block.settings.tab_content }}
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      var tabs = document.querySelectorAll('.tabs');
+      tabs.forEach(function (tab) {
+        var tabLinks = tab.querySelectorAll('.tab-links a');
+        var tabContents = tab.querySelectorAll('.tab');
+
+        tabLinks.forEach(function (link) {
+          link.addEventListener('click', function (e) {
+            e.preventDefault();
+            var id = this.getAttribute('href').substring(1);
+
+            // Deactivate all tabs
+            tabLinks.forEach(function (item) {
+              item.parentNode.classList.remove('active');
+            });
+
+            tabContents.forEach(function (content) {
+              content.classList.remove('active');
+            });
+
+            // Activate the current tab
+            this.parentNode.classList.add('active');
+            document.getElementById(id).classList.add('active');
+          });
+        });
+      });
+    });
+  </script>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Tabbed Section",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "tab",
+      "name": "Tab",
+      "settings": [
+        {
+          "type": "text",
+          "id": "tab_title",
+          "label": "Tab Title",
+          "default": "Product Details"
+        },
+        {
+          "type": "richtext",
+          "id": "tab_content",
+          "label": "Tab Content"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Tabbed Section",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}

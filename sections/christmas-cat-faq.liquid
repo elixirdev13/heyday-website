@@ -1,0 +1,214 @@
+<style>
+/* MAIN WRAPPER */
+.faq-wrapper {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 100px 20px;
+    text-align: center;
+}
+
+/* Heading (matches screenshot) */
+.faq-title {
+    font-size: 38px;
+    font-weight: 700;
+    color: #123d21;
+    margin-bottom: 40px;
+}
+
+/* FAQ LIST */
+.faq-list {
+    text-align: left;
+}
+
+/* CLOSED STATE ROW */
+.faq-item {
+    padding: 18px 0;
+    cursor: pointer;
+}
+
+/* OPEN ITEM (white card with shadow) */
+.faq-item.open {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+    margin-bottom: 25px;
+}
+
+/* QUESTION ROW */
+.faq-question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+/* Chevron icon */
+.chevron {
+    transition: transform 0.3s ease;
+}
+
+/* Rotate when open */
+.faq-item.open .chevron {
+    transform: rotate(180deg);
+}
+
+/* ANSWER TEXT */
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height .35s ease;
+    margin-top: 14px;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #444;
+}
+
+/* Show answer on open */
+.faq-item.open .faq-answer {
+    max-height: 500px;
+}
+
+/* -------------------- */
+/* RESPONSIVE STYLES */
+/* -------------------- */
+
+/* Tablet */
+@media (max-width: 768px) {
+    .faq-wrapper {
+        padding: 60px 20px;
+    }
+
+    .faq-title {
+        font-size: 30px;
+        margin-bottom: 30px;
+    }
+
+    .faq-item.open {
+        padding: 22px;
+        margin-bottom: 20px;
+    }
+
+    .faq-question {
+        font-size: 16px;
+    }
+
+    .faq-answer {
+        font-size: 15px;
+    }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+
+    .faq-title {
+        font-size: 26px;
+        line-height: 1.2;
+    }
+
+    .faq-item {
+        padding: 16px 0;
+    }
+
+    .faq-item.open {
+        padding: 18px;
+        border-radius: 8px;
+    }
+
+    .faq-question {
+        font-size: 15px;
+    }
+
+    .chevron {
+        width: 12px;
+        height: 12px;
+    }
+
+    .faq-answer {
+        font-size: 14px;
+        margin-top: 12px;
+    }
+}
+</style>
+
+<div class="faq-wrapper">
+    <h2 class="faq-title">{{ section.settings.title }}</h2>
+
+    <div class="faq-list">
+    {% for block in section.blocks %}
+    <div class="faq-item">
+        <div class="faq-question" data-faq>
+            <span>{{ block.settings.question }}</span>
+
+            <!-- Chevron icon -->
+            <svg class="chevron" width="14" height="14" viewBox="0 0 20 20">
+                <path d="M6 8l4 4 4-4" stroke="currentColor" stroke-width="2" fill="none" />
+            </svg>
+        </div>
+
+        <div class="faq-answer">
+            <p>{{ block.settings.answer }}</p>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const items = document.querySelectorAll(".faq-item");
+
+    items.forEach(item => {
+        const question = item.querySelector("[data-faq]");
+
+        question.addEventListener("click", () => {
+            const open = item.classList.contains("open");
+
+            items.forEach(i => i.classList.remove("open"));
+
+            if (!open) item.classList.add("open");
+        });
+    });
+});
+</script>
+
+{% schema %}
+{
+  "name": "FAQ",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "Frequently Asked Questions"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "faq_item",
+      "name": "FAQ Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question",
+          "default": "Sample question?"
+        },
+        {
+          "type": "textarea",
+          "id": "answer",
+          "label": "Answer",
+          "default": "Sample answer text goes here."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Christmas Catalog FAQ"
+    }
+  ]
+}
+{% endschema %}

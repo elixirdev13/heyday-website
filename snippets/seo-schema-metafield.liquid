@@ -1,0 +1,23 @@
+{%- comment -%}
+  Outputs extra JSON-LD schema from metafields.
+
+  Supported:
+  - product.metafields.custom.extra_schema
+  - page.metafields.custom.extra_schema
+{%- endcomment -%}
+
+{%- liquid
+  assign extra_schema = blank
+
+  if product and product.metafields.custom.extra_schema != blank
+    assign extra_schema = product.metafields.custom.extra_schema.value
+  elsif page and page.metafields.custom.extra_schema != blank
+    assign extra_schema = page.metafields.custom.extra_schema.value
+  endif
+-%}
+
+{%- if extra_schema != blank -%}
+  <script type="application/ld+json">
+    {{ extra_schema | json }}
+  </script>
+{%- endif -%}

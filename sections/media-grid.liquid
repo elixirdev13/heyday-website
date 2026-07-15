@@ -1,0 +1,239 @@
+<!-- Grid Section with Multiple Items and Fade-In Animation -->
+<section class="activity-grid fade-in-section">
+  <div class="page-width">
+    <h2 class="category-cards-title">{{ section.settings.title }}</h2>
+    <div class="grid">
+      {% for block in section.blocks %}
+        <div class="grid-item-{{ forloop.index }} grid-item-mobile">
+          <a href="{{ block.settings.link }}" class="grid-link">
+            <img
+              src="{{ block.settings.image | img_url: 'master' }}"
+              alt="{{ block.settings.alt_text }}"
+              class="grid-image"
+            >
+            <div class="grid-overlay">
+              <p class="grid-title">{{ block.settings.title }}</p>
+            </div>
+          </a>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<style>
+  #shopify-section-{{ section.id }} .activity-grid {
+    text-align: center;
+    padding: 50px 20px;
+    background-color: #f8f8f8;
+  }
+   #shopify-section-{{ section.id }} .category-cards-title {
+      font-size: 2em;
+      font-weight: 400;
+      margin-bottom: 30px;
+      color: #2f4f2f;
+      font-family: "MajesticKingdome";
+  }
+  #shopify-section-{{ section.id }} .grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+  }
+  .grid-item-1 {
+    width: calc(25% - 20px);
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    height: 300px;
+  }
+  .grid-item-2 {
+    width: calc(25% - 20px);
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    height: 300px;
+  }
+  .grid-item-3 {
+    width: calc(25% - 20px);
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    height: 300px;
+  }
+  .grid-item-4 {
+    width: calc(25% - 20px);
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    height: 300px;
+  }
+  .grid-item-5 {
+    width: calc(25% - 20px);
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    height: 300px;
+  }
+  .grid-item-6 {
+    width: calc(25% - 20px);
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    height: 300px;
+  }
+  .grid-item-7 {
+    width: calc(25% - 20px);
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    height: 300px;
+  }
+  .grid-item-8 {
+    width: calc(25% - 20px);
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    height: 300px;
+  }
+  }
+  .grid-link {
+    display: block;
+    position: relative;
+    height: 100%;
+  }
+  .grid-image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.3s ease;
+    object-fit: cover;
+  }
+  .grid-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.1);
+    color: #fff;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+  }
+  .grid-item:hover .grid-overlay {
+    opacity: 1;
+  }
+  .grid-item:hover .grid-image {
+    transform: scale(1.05);
+  }
+  .fade-in-section {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 1s ease-out, transform 1s ease-out;
+  }
+  .fade-in-section.fade-in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  p.grid-title {
+    z-index: 2;
+    color: #fff;
+    font-size: 1.5em;
+    font-weight: bold;
+    padding: 10px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+    font-family: "MajesticKingdome";
+  }
+
+  @media only screen and (max-width: 768px) {
+    .grid-item-mobile {
+      width: calc(100% - 20px);
+      position: relative;
+      border-radius: 10px;
+      overflow: hidden;
+      transition: transform 0.3s ease;
+      height: 200px;
+    }
+
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    function fadeInSection() {
+      const sections = document.querySelectorAll('.fade-in-section');
+      const windowHeight = window.innerHeight;
+
+      sections.forEach(section => {
+        const sectionTop = section.getBoundingClientRect().top;
+        if (sectionTop < windowHeight - 100) {
+          section.classList.add('fade-in');
+        }
+      });
+    }
+
+    window.addEventListener('scroll', fadeInSection);
+    fadeInSection(); // Trigger fade-in on page load in case section is already in view
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Custom Grid",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "What are you looking for?"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "activity",
+      "name": "Activity",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "alt_text",
+          "label": "Image Alt Text"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Grid",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}
+
+

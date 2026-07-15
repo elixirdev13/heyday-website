@@ -1,0 +1,282 @@
+{% comment %}
+  /**
+    * @param {object} main_menu - The main menu object
+    * @param {string} nav_position - navigation position
+    * @param {boolean} show_mega_products - show mega products
+    * @param {string} hover_menu - hover menu
+    * @param {boolean} quick_add_enable - whether quick add is enabled
+    * @param {boolean} quick_shop_enable - whether quick shop is enabled
+    * @param {string} product_grid_image_size - the image size to use for the grid item
+    * @param {boolean} product_grid_image_fill - whether the image should fill the grid item
+    * @param {boolean} product_hover_image - whether second image will be shown on hover
+    * @param {boolean} enable_swatches - whether swatches are enabled
+    * @param {boolean} vendor_enable - whether to show the vendor
+    * @param {boolean} product_save_amount - show save amount
+    * @param {string} product_save_type - dollar or percent
+    * @param {boolean} superscript_decimals - whether to superscript decimals
+    * @param {boolean} set_image_breathing_room - whether to set image breathing room
+  */
+{% endcomment %}
+
+{%- liquid
+  unless limit
+    assign limit = main_menu.links.size
+  endunless
+  unless offset
+    assign offset = 0
+  endunless
+-%}
+
+<ul class="site-nav site-navigation site-navigation--{{ nav_position }} small--hide">
+  {%- for link in main_menu.links limit: limit offset: offset -%}
+    {%- liquid
+      assign has_dropdown = false
+      assign is_megamenu = false
+      if link.levels > 0
+        assign has_dropdown = true
+        if link.levels > 1
+          assign is_megamenu = true
+        endif
+      endif
+
+      assign isCollection = false
+      if show_mega_products
+        if is_megamenu and link.url contains routes.collections_url
+          assign collection_handle = link.url | remove: routes.collections_url | remove: '/'
+          assign collection_drop = collections[collection_handle]
+          assign isCollection = true
+        endif
+      endif
+    -%}
+
+    {%- for block in section.blocks -%}
+      {%- liquid
+        assign link_title_downcase = link.title | strip | downcase
+        assign mega_menu_block = ''
+        for block in section.blocks
+          assign menu_item_downcase = block.settings.menu_item | downcase
+
+          if menu_item_downcase == link_title_downcase
+            assign mega_menu_block = block
+
+            break
+          endif
+        endfor
+      %}
+    {% endfor %}
+
+    <li class="site-nav__item site-nav__expanded-item{% if has_dropdown %} site-nav--has-dropdown{% endif %}{% if  mega_menu_block != '' %} site-nav--is-megamenu{% endif %}">
+      {% if has_dropdown or mega_menu_block != '' %}
+        <details
+          id="site-nav-item--{{ forloop.index }}"
+          class="site-nav__details"
+          data-hover="{{ hover_menu }}"
+        >
+      {% endif %}
+      {% if has_dropdown or mega_menu_block != '' %}
+        <summary
+          data-link="{{ link.url }}"
+          aria-expanded="false"
+          aria-controls="site-nav-item--{{ forloop.index }}"
+          class="site-nav__link site-nav__link--underline{% if has_dropdown %} site-nav__link--has-dropdown{% endif %}"
+        >
+          {{ link.title }}
+          {% render 'icon', name: 'chevron-down' %}
+        </summary>
+      {% endif %}
+      {% unless mega_menu_block != '' or has_dropdown %}
+        <a
+          href="{{ link.url }}"
+          class="site-nav__link site-nav__link--underline{% if has_dropdown %} site-nav__link--has-dropdown{% endif %}"
+        >
+          {{ link.title }}
+        </a>
+      {% endunless %}
+      {%- if is_megamenu or mega_menu_block != '' -%}
+        {%- assign previous_column_type = '' -%}
+        <div class="site-nav__dropdown megamenu text-left">
+          <div class="page-width">
+            <div class="site-nav__dropdown-animate megamenu__wrapper">
+              <div class="megamenu__cols">
+                {%- if mega_menu_block.type == 'megamenulink' -%}
+                  <div class="megamenu__col">
+                    {%- for childlink in mega_menu_block.settings.megamenu_main_menu_link_list.links -%}
+                      {%- liquid
+                        assign create_new_column = false
+
+                        if childlink.levels > 0 and forloop.index != 1
+                          assign create_new_column = false
+                        endif
+
+                        if childlink.levels == 0 and previous_column_type == 'full'
+                          assign create_new_column = false
+                        endif
+
+                        assign image_url = ''
+                        assign button_url = ''
+
+                        if forloop.index == 1
+                          assign image_url = mega_menu_block.settings.image_1
+                          assign button_url = mega_menu_block.settings.button_url_1
+                        elsif forloop.index == 2
+                          assign image_url = mega_menu_block.settings.image_2
+                          assign button_url = mega_menu_block.settings.button_url_2
+                        elsif forloop.index == 3
+                          assign image_url = mega_menu_block.settings.image_3
+                          assign button_url = mega_menu_block.settings.button_url_3
+                        elsif forloop.index == 4
+                          assign image_url = mega_menu_block.settings.image_4
+                          assign button_url = mega_menu_block.settings.button_url_4
+                        elsif forloop.index == 5
+                          assign image_url = mega_menu_block.settings.image_5
+                          assign button_url = mega_menu_block.settings.button_url_5
+                        elsif forloop.index == 6
+                          assign image_url = mega_menu_block.settings.image_6
+                          assign button_url = mega_menu_block.settings.button_url_6
+                        elsif forloop.index == 7
+                          assign image_url = mega_menu_block.settings.image_7
+                          assign button_url = mega_menu_block.settings.button_url_7
+                        elsif forloop.index == 8
+                          assign image_url = mega_menu_block.settings.image_8
+                          assign button_url = mega_menu_block.settings.button_url_8
+                        endif
+                      -%}
+
+                      {%- if create_new_column -%}
+                        </div>
+                      {%- endif -%}
+                      {%- if create_new_column -%}
+                        <div class="megamenu__col">
+                      {%- endif -%}
+
+                      <div class="megamenu__col-title">
+                        <a
+                          href="{{ childlink.url }}"
+                          class="site-nav__dropdown-link site-nav__dropdown-link--top-level"
+                          data-image-url="{{ image_url | img_url: '350x350' }}"
+                          data-button-url="{{ button_url }}"
+                        >
+                          {{- childlink.title -}}
+                        </a>
+                        {%- if childlink.links.size > 0 -%}
+                          <div class="megamenu__grandchild-links">
+                            {%- for grandchildlink in childlink.links -%}
+                              <div class="megamenu__grandchild">
+                                <a href="{{ grandchildlink.url }}" class="site-nav__dropdown-link">
+                                  {{ grandchildlink.title }}
+                                </a>
+                                {%- if grandchildlink.links.size > 0 -%}
+                                  <div class="megamenu__grand-grandchild-links">
+                                    {%- for grandgrandchildlink in grandchildlink.links -%}
+                                      <a href="{{ grandgrandchildlink.url }}" class="site-nav__dropdown-link">
+                                        {{ grandgrandchildlink.title }}
+                                      </a>
+                                    {%- endfor -%}
+                                  </div>
+                                {%- endif -%}
+                              </div>
+                            {%- endfor -%}
+                          </div>
+                        {%- endif -%}
+                      </div>
+
+                      {%- liquid
+                        if childlink.levels > 0
+                          assign previous_column_type = 'full'
+                        else
+                          assign previous_column_type = 'single'
+                        endif
+                      -%}
+                    {%- endfor -%}
+                  </div>
+                  <!-- Add a new column for the image and button -->
+                  <div class="megamenu__col megamenu__col--image-button">
+                    <img
+                      src="https://cdn.shopify.com/s/files/1/0673/0045/8748/files/Best_Sellers.jpg?v=1723790108"
+                      alt="Shop Image"
+                      id="megamenu-image"
+                      class="megamenu__image"
+                    >
+                    <a href="#" class="megamenu__button" id="megamenu-button">SHOP NOW</a>
+                  </div>
+                {%- elsif mega_menu_block.type == 'megamenulink2' -%}
+                  <!-- Start of megamenulink2 -->
+                  <div class="megamenu__col megamenu__col--grid">
+                    <div class="megamenu__grid-items">
+                      {%- for i in (1..4) -%}
+                        {%- capture url_setting -%}button_url_{{ i }}{%- endcapture -%}
+                        {%- capture image_setting -%}image_{{ i }}{%- endcapture -%}
+                        {%- capture title_setting -%}title_{{ i }}{%- endcapture -%}
+                        <div class="megamenu__grid-item">
+                          <a href="{{ mega_menu_block.settings[url_setting] }}">
+                            <img
+                              src="{{ mega_menu_block.settings[image_setting] | img_url: 'master' }}"
+                              alt="{{ mega_menu_block.settings[title_setting] }}"
+                            >
+                            <h2>{{ mega_menu_block.settings[title_setting] }}</h2>
+                          </a>
+                        </div>
+                      {%- endfor -%}
+                    </div>
+                  </div>
+                  <!-- End of megamenulink2 -->
+                {%- endif -%}
+              </div>
+              {%- if isCollection -%}
+                <div class="megamenu__featured">
+                  <div class="product-grid">
+                    {%- liquid
+                      assign mega_product = collection_drop.products.first
+
+                      render 'product-grid-item', product: mega_product, sizeVariable: '19vw', collection: collection, quick_add_enable: quick_add_enable, quick_shop_enable: quick_shop_enable, product_grid_image_size: product_grid_image_size, product_grid_image_fill: product_grid_image_fill, product_hover_image: product_hover_image, enable_swatches: enable_swatches, vendor_enable: vendor_enable, product_save_amount: product_save_amount, product_save_type: product_save_type, superscript_decimals: superscript_decimals, set_image_breathing_room: set_image_breathing_room, enable_product_tags: enable_product_tags, product_grid_style: product_grid_style
+                    -%}
+                  </div>
+                </div>
+              {%- endif -%}
+            </div>
+          </div>
+        </div>
+
+      {%- elsif has_dropdown -%}
+        <div class="site-nav__dropdown">
+          <ul class="site-nav__dropdown-animate site-nav__dropdown-list text-left">
+            {%- for childlink in link.links -%}
+              {%- liquid
+                assign has_sub_dropdown = false
+                if childlink.levels > 0
+                  assign has_sub_dropdown = true
+                endif
+              -%}
+
+              <li class="{% if has_sub_dropdown %} site-nav__deep-dropdown-trigger{% endif %}">
+                <a
+                  href="{{ childlink.url }}"
+                  class="site-nav__dropdown-link site-nav__dropdown-link--second-level{% if has_sub_dropdown %} site-nav__dropdown-link--has-children{% endif %}"
+                >
+                  {{ childlink.title | escape }}
+                  {%- if has_sub_dropdown -%}
+                    {% render 'icon', name: 'chevron-down' %}
+                  {%- endif -%}
+                </a>
+                {%- if has_sub_dropdown -%}
+                  <ul class="site-nav__deep-dropdown">
+                    {%- for grandchildlink in childlink.links -%}
+                      <li>
+                        <a href="{{ grandchildlink.url }}" class="site-nav__dropdown-link">
+                          {{- grandchildlink.title | escape -}}
+                        </a>
+                      </li>
+                    {%- endfor -%}
+                  </ul>
+                {%- endif -%}
+              </li>
+            {%- endfor -%}
+          </ul>
+        </div>
+      {%- endif -%}
+      {% if is_megamenu or has_dropdown %}
+        </details>
+      {% endif %}
+    </li>
+  {%- endfor -%}
+</ul>

@@ -1,0 +1,282 @@
+{% comment %}
+  /**
+   * @param {object} section - section object
+   * @param {boolean} space_around - enable space around section
+   * @param {boolean} full_width - enable full width
+   * @param {number} blocks_size - number of blocks in section
+   */
+{% endcomment %}
+
+<style>
+    .about-sec4-container {
+      padding-left: 120px;
+    }
+      .value-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .value-list li {
+      color: #333;
+      padding: 10px 20px;
+      margin-bottom: 10px;
+      border-radius: 5px 0px 0px 5px;
+    }
+    .happiness {
+      border-color: #f0ad4e;
+      background-color: #f3dbb8;
+    }
+    .innovation {
+      border-color: #5bc0de;
+      background-color: #eed774;
+    }
+    .social {
+      border-color: #5cb85c;
+      background-color: #faad22;
+    }
+    .excellence {
+      border-color: #428bca;
+      background-color: #164734;
+      color: #fff !important;
+    }
+    .empathy {
+      border-color: #d9534f;
+      background-color: #81CBEA;
+    }
+    .courage {
+      border-color: #8e44ad;
+      background-color: #F3DBB8;
+    }
+          .last-section-container-inner {
+          display: flex;
+          align-items: center;
+          border-radius: 0 80px 0 80px;
+          background-color: #fff;
+          padding: 30px 50px;
+          gap: 20px;
+          border: 2px solid #164734;
+          width: 100%;
+          justify-content: space-between;
+        }
+              .custom-content-image-for-desktop {
+                display: block;
+              }
+              .custom-content-image-for-mobile {
+                display: none;
+              }
+              .section-3-button {
+                background-color: #164734;
+                text-decoration: none !important;
+                color: #fff !important;
+                padding: 12px 24px 12px 24px !important;
+
+                border-radius: 22px;
+            }
+          .custom__item {
+            margin-bottom: 0px;
+          }
+
+              .section-3-text-2 {
+              font-weight: 500;
+              padding-right: 150px;
+              margin-bottom: 60px !important;
+            }
+        .section-3-button {
+          display: block;
+          width: 180px;
+          text-align: center;
+        }
+              @media (max-width:768px){
+                .custom-about-sec4-container {
+                  margin: 0px 10px;
+                  text-align:center;
+                }
+                .value-list {
+                  padding: 15px 0px 0px 20px;
+                }
+                .about-sec2-container {
+                  margin: 0px 20px;
+                }
+              .custom-content-image-for-desktop {
+                display: none;
+              }
+              .custom-content-image-for-mobile {
+                display: block;
+              }
+              .image-wrap {
+              position: relative;
+              height: 160px !important;
+          }
+                 .section-3-text-2 {
+                font-weight: 500;
+                padding-right: 15px;
+                text-align: center;
+                padding-left: 15px;
+                    margin-bottom: 20px !important;
+              }
+                .section-3-container {
+                  padding-right: 15px;
+                  padding-left: 15px;
+                  padding-bottom: 30px;
+                  padding-top: 20px;
+
+                }
+                .section-3-button {
+                padding: 10px 24px 10px 24px !important;
+                display:block;
+                width:100%;
+                text-align:center;
+
+            }
+                .last-section-container-inner {
+                   flex-direction: column;
+                      padding: 20px 10px;
+                }
+                .last-section-container-inner.custom-about-last-container {
+                  gap: 15px !important;
+                }
+              #shopify-section-template--16991074025724__advanced_content_DYGAxB .last-section-container{
+                padding: 60px 20px !important;
+              }
+                .last-section-content-left > h4 {
+                  text-align: center;
+
+                }
+                .last-section-content-left > p {
+                  text-align: center;
+                }
+                #shopify-section-template--16991074025724__featured-collections .collection-item__title {
+          color: #fff;
+          font-family: "SadinesSans", sans-serif;
+          font-size: 20px;
+          line-height: 0.7;
+      }
+                #shopify-section-template--16991074025724__advanced_content_DYGAxB .last-section-content-left > h4 {
+                  font-size : 28px !important;
+                }
+                .last-section-content-left.custom-about-h4 > h4 {
+                  font-size : 20px !important;
+                  text-align: center;
+                }
+                .about-sec2-heading {
+                  font-size : 28px !important;
+  }
+                .about-sec4-p {
+                  font-size : 18px !important;
+                  margin-bottom: 20px !important;
+                  text-align: center;
+  }
+                .about-sec4-heading {
+                  font-size : 28px !important;
+                  margin-bottom: 5px !important;
+                  text-align: center;
+                }
+                .last-section-container {
+                    padding: 60px 30px !important;
+                }
+                .about-sec4-container {
+                    padding-left: 20px;
+                }
+</style>
+
+{%- liquid
+  assign lazyload_images = true
+  if section.index == 1
+    assign lazyload_images = false
+  endif
+-%}
+
+{%- if space_around -%}
+  <div class="index-section">
+{%- endif -%}
+{%- unless full_width -%}
+  <div class="page-width">
+{%- endunless -%}
+<div class="custom-content">
+  {%- for block in section.blocks -%}
+    {%- liquid
+      case block.settings.width
+        when '25%'
+          assign block_width = 'small--one-whole one-quarter'
+        when '33%'
+          assign block_width = 'small--one-whole one-third'
+        when '50%'
+          assign block_width = 'small--one-whole one-half'
+        when '66%'
+          assign block_width = 'small--one-whole two-thirds'
+        when '75%'
+          assign block_width = 'small--one-whole three-quarters'
+        when '100%'
+          assign block_width = 'one-whole'
+      endcase
+    -%}
+    <div
+      class="custom__item {{ block_width }}{% if block.settings.alignment %} align--{{ block.settings.alignment }}{% endif %}"
+      {{ block.shopify_attributes }}
+    >
+      <div class="custom__item-inner custom__item-inner--{{ block.type }}{% if block.settings.image == blank and block.type == 'image' %} custom__item-inner--placeholder-image{% endif %}">
+        {%- case block.type -%}
+          {%- when 'liquid' -%}
+            {%- if block.settings.code != blank -%}
+              <div class="rte clearfix">
+                {{ block.settings.code }}
+              </div>
+            {%- else -%}
+              <div class="rte clearfix">
+                {{ 'info.section_no_content' | t }}
+              </div>
+            {%- endif -%}
+          {%- when 'image' -%}
+            {%- if block.settings.link != blank -%}
+              <a href="{{ block.settings.link }}">
+            {%- endif -%}
+            {%- if block.settings.image != blank -%}
+              <div
+                class="image-wrap"
+                style="height: 0; padding-bottom: {{ 100 | divided_by: block.settings.image.aspect_ratio }}%;"
+              >
+                {%- liquid
+                  assign blockWidth = block.settings.width | remove: '%' | times: 1
+                  if forloop.index == 1 and blockWidth >= 50
+                    assign loading = lazyload_images
+                  else
+                    assign loading = true
+                  endif
+                -%}
+                {%- render 'image-element',
+                  img: block.settings.image,
+                  loading: loading,
+                  sizeVariable: block.settings.width,
+                  widths: '360, 540, 720, 900, 1080, 1600'
+                -%}
+              </div>
+            {%- else -%}
+              <div class="image-wrap">
+                {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }}
+              </div>
+            {%- endif -%}
+            {%- if block.settings.link != blank -%}
+              </a>
+            {%- endif -%}
+        {%- endcase -%}
+      </div>
+    </div>
+  {%- endfor -%}
+  {%- if blocks_size == 0 -%}
+    <div class="page-width">
+      <div class="grid clearfix">
+        <div class="grid__item">
+          <div class="rte clearfix">
+            {{ 'info.section_no_content' | t }}
+          </div>
+        </div>
+      </div>
+    </div>
+  {%- endif -%}
+</div>
+{%- unless full_width -%}
+  </div>
+{%- endunless -%}
+{%- if space_around -%}
+  </div>
+{%- endif -%}

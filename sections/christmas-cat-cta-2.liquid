@@ -1,0 +1,206 @@
+<style>
+    .christmas-cta-2 {
+        padding: 100px 60px;
+        background-image: url({{ section.settings.bg_image | img_url: 'master' }});
+        background-size: cover;
+        background-position: center;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .cta2-container {
+        display:flex;
+        flex-direction:column;
+        justify-content:center;
+        align-items:center;
+        text-align:center;
+    }
+
+    .cta2-text-container h1 {
+        color: white;
+        font-size: 32px;
+        font-weight: 400;
+    }
+
+    .cta2-text-container h3 {
+        color: white;
+        font-size: 24px;
+        font-weight: 400;
+        max-width:800px;
+    }
+
+    .cta2-buttons {
+        display: flex;
+        gap: 16px;
+        margin-top: 24px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+ .cta2-btn1 {
+    max-width: 255px;
+    display: inline-block;
+    padding: 8px 20px;
+    background: #164734;
+    color: white;
+    text-decoration: none;
+    border-radius: 22px;
+    font-size: 16px;
+}
+
+.cta2-btn2 {
+    max-width: 255px;
+    display: inline-block;
+    padding: 8px 40px;
+    background: white;
+    color: #164734;
+    text-decoration: none;
+    border-radius: 22px;
+    border: 1px solid white;
+    font-size: 16px;
+}
+
+a.cta2-btn1:hover {
+    background: rgb(13, 42, 31) !important;
+    color:white;
+}
+
+a.cta2-btn2:hover {
+    background: rgba(172, 172, 172, 0.09) !important;
+    color:white;
+}
+
+
+
+
+
+    /* ----------------------------- */
+    /*     MOBILE BACKGROUND IMAGE   */
+    /* ----------------------------- */
+    @media (max-width: 768px) {
+        .christmas-cta-2 {
+            background-image: url({{ section.settings.bg_image_mobile | img_url: 'master' }});
+            padding: 60px 20px;
+        }
+
+        .cta2-text-container h1{
+            font-size: 26px;
+        }
+
+        .cta2-text-container h3{
+            font-size: 18px;
+        }
+
+        .cta2-buttons a.cta2-btn{
+            font-size: 16px;
+            padding: 10px 22px;
+        }
+    }
+
+    @media (max-width: 480px){
+        .christmas-cta-2 {
+            padding: 40px 16px;
+        }
+
+        .cta2-text-container h1{
+            font-size: 22px;
+        }
+
+        .cta2-text-container h3{
+            font-size: 16px;
+        }
+
+        .cta2-buttons {
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .cta2-buttons a.cta2-btn{
+            width: 100%;
+            max-width: 260px;
+            padding: 12px;
+        }
+    }
+</style>
+
+<div class="christmas-cta-2">
+    <div class="cta2-container">
+
+        <div class="cta2-text-container">
+            <h1>{{ section.settings.header }}</h1>
+            <h3>{{ section.settings.subheader }}</h3>
+        </div>
+
+        <div class="cta2-buttons">
+            <a href="{{ section.settings.button1_link }}" class="cta2-btn1">
+                {{ section.settings.button1_text }}
+            </a>
+            <a href="{{ section.settings.button2_link }}" class="cta2-btn2">
+                {{ section.settings.button2_text }}
+            </a>
+        </div>
+
+    </div>
+</div>
+
+{% schema %}
+{
+    "name": "Christmas CTA 2",
+    "settings": [
+        {
+            "type": "image_picker",
+            "label": "Desktop Background Image",
+            "id": "bg_image"
+        },
+        {
+            "type": "image_picker",
+            "label": "Mobile Background Image",
+            "id": "bg_image_mobile"
+        },
+
+        /* TEXT CONTENT */
+        {
+            "type": "text",
+            "label": "Header",
+            "id": "header"
+        },
+        {
+            "type": "text",
+            "label": "Subheader",
+            "id": "subheader"
+        },
+
+        /* BUTTON 1 */
+        {
+            "type": "text",
+            "label": "Button 1 Text",
+            "id": "button1_text",
+            "default": "Shop Now"
+        },
+        {
+            "type": "url",
+            "label": "Button 1 Link",
+            "id": "button1_link"
+        },
+
+        /* BUTTON 2 */
+        {
+            "type": "text",
+            "label": "Button 2 Text",
+            "id": "button2_text",
+            "default": "Learn More"
+        },
+        {
+            "type": "url",
+            "label": "Button 2 Link",
+            "id": "button2_link"
+        }
+    ],
+    "presets": [
+        {
+            "name": "Christmas CTA 2"
+        }
+    ]
+}
+{% endschema %}

@@ -1,0 +1,22 @@
+<div class="custom-liquid-section">
+  {{ section.settings.custom_liquid_code }}
+</div>
+
+{% schema %}
+{
+  "name": "Custom Liquid Section",
+  "settings": [
+    {
+      "type": "textarea",
+      "id": "custom_liquid_code",
+      "label": "Custom Liquid Code",
+      "default": "<h2>Welcome to our store!</h2>"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Liquid Section"
+    }
+  ]
+}
+{% endschema %}

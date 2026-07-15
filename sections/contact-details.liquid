@@ -1,0 +1,113 @@
+<div id="shopify-section-template--17974677733628__92a5b7c7-1103-49b5-888b-ebf08531ad68" class="shopify-section index-section--flush">
+<is-land on:idle="" ready="">
+  <background-image>
+   <div data-section-id="template--17974677733628__92a5b7c7-1103-49b5-888b-ebf08531ad68" data-section-type="background-image" class="background-media-text background-media-text--template--17974677733628__92a5b7c7-1103-49b5-888b-ebf08531ad68 background-media-text--450 loaded">
+
+      <div class="background-media-text__container">
+            
+
+
+<image-element data-image-type=""><img src="//heyday.ph/cdn/shop/files/Contact_Details_Banner_PC.png?v=1706670825&amp;width=2400" alt="" srcset="//heyday.ph/cdn/shop/files/Contact_Details_Banner_PC.png?v=1706670825&amp;width=352 352w, //heyday.ph/cdn/shop/files/Contact_Details_Banner_PC.png?v=1706670825&amp;width=832 832w, //heyday.ph/cdn/shop/files/Contact_Details_Banner_PC.png?v=1706670825&amp;width=1200 1200w, //heyday.ph/cdn/shop/files/Contact_Details_Banner_PC.png?v=1706670825&amp;width=1920 1920w, //heyday.ph/cdn/shop/files/Contact_Details_Banner_PC.png?v=1706670825&amp;width=2400 2400w" width="2400" height="1000.2332944509249" loading="lazy" class="image-fit background-media-text__image background-media-text__image--template--17974677733628__92a5b7c7-1103-49b5-888b-ebf08531ad68 image-element animape animape-visible" sizes="100vw" data-animape="fadein"> 
+  
+  
+</image-element>
+  <script type="module">
+    import 'components/image-element';
+  </script></div><div class="background-media-text__inner">
+          <div class="background-media-text__aligner background-media-text--left">
+            <div class="animation-contents is-visible">
+              <div class="background-media-text__text "><p class="contact-accent-subtitle">Email:</p><div class="rte background-media-text__subtext clearfix"><p>hey@heyday.ph</p><p class="contact-accent-subtitle"><strong>Address:</strong></p><p>Ground floor, Glorietta 4 Ayala Center, Makati City</p><p class="contact-accent-subtitle">Customer Service Schedule:</p><p>Monday to Sunday</p><p>10:00 AM - 9:00 PM</p></div></div>
+            </div>
+          </div>
+        </div></div>
+  </background-image>
+
+  
+    <script type="module">
+      import 'components/section-background-image-text';
+    </script>
+  
+</is-land>
+
+<style> #shopify-section-template--17974677733628__92a5b7c7-1103-49b5-888b-ebf08531ad68 .rte p {margin-bottom: 5px;} #shopify-section-template--17974677733628__92a5b7c7-1103-49b5-888b-ebf08531ad68 .rte p:first-child {margin-bottom: 20px;} #shopify-section-template--17974677733628__92a5b7c7-1103-49b5-888b-ebf08531ad68 .rte p:nth-child(3) {margin-bottom: 20px;} #shopify-section-template--17974677733628__92a5b7c7-1103-49b5-888b-ebf08531ad68 .accent-subtitle {margin: 0 0;} </style></div>
+
+
+<div id="ecomposer-custom-section">  
+
+  {%- if section.settings.title != blank -%}
+
+  <div class="ecomposer-custom-title"><h2>{{section.settings.title}}</h2></div>  
+
+  {%- endif -%}    
+
+  <div class="ecomposer-custom-code">{{section.settings.custom_HTML}}</div>
+
+  <p class="ecomposer-credit">Powered by <a href="//www.ecomposer.io" target="_blank">ecomposer.io</a></p>
+
+</div>
+
+<style> 
+
+  .contact-accent-subtitle{
+    font-family:"Majestic Kingdome";
+  }
+
+  #ecomposer-custom-section{position:relative;}
+
+  .ecomposer-custom-title{text-align:center;}
+
+  .ecomposer-credit{text-align:right;font-size:11px; margin-bottom:20px;font-style:italic;}
+
+</style>
+
+
+{% schema %}
+
+  {
+
+    "name": "HTML",
+
+    "settings": [
+
+      {
+
+        "type": "text",
+
+        "id": "title",
+
+        "label": "Title"
+
+      },
+
+      {
+
+        "type":"textarea",
+
+        "id": "custom_HTML",
+
+        "label": "HTML"
+
+      }
+
+    ],
+
+    "presets": [
+
+      {
+
+        "name": "Contact Details",
+
+        "category": "ecomposer",
+
+        "settings": {
+
+
+        }
+
+      }
+
+    ]
+
+  }
+
+{% endschema %}

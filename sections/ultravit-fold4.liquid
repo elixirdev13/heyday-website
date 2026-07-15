@@ -1,0 +1,238 @@
+<style>
+  /* Section Layout */
+  #shopify-section-{{ section.id }} .bestseller-section {
+    padding: 60px 20px;
+    background-color: {{ section.settings.bg_color }};
+  }
+
+  /* Heading */
+  #shopify-section-{{ section.id }} .section-heading {
+    text-align: center;
+    font-size: 42px;
+    font-weight: 700;
+    color: {{ section.settings.heading_color }};
+    margin-bottom: 50px;
+  }
+
+  /* Grid Layout */
+  .bestseller-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  /* Product Card */
+  .product-card {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: left;
+    transition: box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+  }
+  
+  .product-card:hover {
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+  }
+
+  /* Image Area */
+  .card-image-wrapper {
+    position: relative;
+    margin-bottom: 15px;
+    overflow: hidden;
+  }
+
+  .card-image-wrapper img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    display: block;
+    aspect-ratio: 1 / 1; /* Ensures square aspect ratio like the example */
+  }
+
+
+  /* Text Content */
+  .product-info h3 {
+    font-size: 18px;
+    font-weight: 700;
+    color: #000;
+    margin: 0 0 5px;
+    min-height: 44px; /* Align titles if they span 2 lines */
+  }
+  
+  .product-info a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .product-price {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 20px;
+    display: block;
+  }
+
+  /* Add to Cart Button */
+  .add-btn {
+    display: block;
+    width: 100%;
+    padding: 12px 0;
+    background-color: {{ section.settings.heading_color }};
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+    transition: opacity 0.2s;
+    font-size: 16px;
+  }
+
+  .add-btn:hover {
+    opacity: 0.9;
+  }
+  
+  .add-btn:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+
+  /* Mobile Responsive */
+  @media (max-width: 1024px) {
+    .bestseller-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 600px) {
+    .bestseller-grid {
+      grid-template-columns: 1fr;
+    }
+    .section-heading {
+      font-size: 32px !important;
+    }
+  }
+</style>
+
+<div class="bestseller-section" id="best-seller">
+  {% if section.settings.heading != blank %}
+    <h2 class="section-heading">{{ section.settings.heading }}</h2>
+  {% endif %}
+
+  <div class="bestseller-grid">
+    {% for block in section.blocks %}
+      {%- assign product = block.settings.product_ref -%}
+      
+      <div class="product-card" {{ block.shopify_attributes }}>
+        
+        <div class="card-image-wrapper">
+          <a href="{{ product.url | default: '#' }}">
+            {% if product.featured_image != blank %}
+              <img src="{{ product.featured_image | image_url: width: 400 }}" 
+                   alt="{{ product.title | escape }}" 
+                   loading="lazy">
+            {% else %}
+              {{ 'product-1' | placeholder_svg_tag }}
+            {% endif %}
+          </a>
+
+          {% if block.settings.show_banner %}
+            <div class="guarantee-banner">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 8v4"></path><path d="M12 16h.01"></path></svg>
+              {{ block.settings.banner_text }}
+            </div>
+          {% endif %}
+        </div>
+
+        <div class="product-info">
+          <h3>
+            <a href="{{ product.url | default: '#' }}">
+              {{ product.title | default: 'Product Title' }}
+            </a>
+          </h3>
+          <span class="product-price">
+            {% if product.price %}
+              {{ product.price | money }}
+            {% else %}
+              ₱ 380.00
+            {% endif %}
+          </span>
+          
+          {% if product != blank %}
+            {% form 'product', product %}
+              <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+              
+              <button type="submit" class="add-btn" {% unless product.available %}disabled{% endunless %}>
+                {% if product.available %}
+                  Add to Cart
+                {% else %}
+                  Sold Out
+                {% endif %}
+              </button>
+            {% endform %}
+          {% else %}
+            <button class="add-btn">Add to Cart</button>
+          {% endif %}
+        </div>
+
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Bestsellers Dynamic",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Our Bestsellers"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Section Background",
+      "default": "#F9F9F9"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading & Button Color",
+      "default": "#1B4D3E"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "product_card",
+      "name": "Product",
+      "settings": [
+        {
+          "type": "product",
+          "id": "product_ref",
+          "label": "Choose Product"
+        },
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Bestsellers Dynamic",
+      "category": "Custom",
+      "blocks": [
+        {"type": "product_card"},
+        {"type": "product_card"},
+        {"type": "product_card"},
+        {"type": "product_card"}
+      ]
+    }
+  ]
+}
+{% endschema %}

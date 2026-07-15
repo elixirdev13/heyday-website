@@ -1,0 +1,174 @@
+<style>
+.section-container {
+  padding: 100px 60px 0px 60px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.header-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+/* RESPONSIVE GRID */
+.image-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 27px;
+  margin-top: 40px;
+  justify-items: center;
+}
+
+/* Each card */
+.card {
+  position: relative;
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  height: 320px;
+  width: 100%;
+  max-width: 290px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 12px;
+  text-decoration: none; /* for clickable link */
+}
+
+/* Hover zoom */
+.card img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  inset: 0;
+  z-index: 1;
+  transition: transform 0.5s ease;
+}
+
+.card:hover img {
+  transform: scale(1.08);
+}
+
+/* Gradient overlay */
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.1),
+    rgba(0, 0, 0, 0.55)
+  );
+  z-index: 1;
+}
+
+.pill {
+  position: absolute;
+  right: 12px;
+  top: 12px;
+  background: #FDD71B;
+  color: black;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: normal;
+  z-index: 3;
+}
+
+.card-text {
+  position: relative;
+  z-index: 3;
+  color: #fff;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* --- OPTIONAL: Mobile Padding Fix --- */
+@media (max-width: 600px) {
+  .section-container {
+    padding: 60px 20px;
+  }
+  .header-text{
+    text-align:center;
+  }
+  .card{
+  max-width: none;
+  }
+}
+</style>
+
+<div class="section-container">
+  <div class="header-text">
+    <h2>{{ section.settings.header }}</h2>
+    <p>{{ section.settings.subheader }}</p>
+  </div>
+
+  <div class="image-container">
+
+    <!-- CARD 1 -->
+    <a href="{{ section.settings.link1 }}" class="card">
+      <span class="pill">{{ section.settings.pill_text_1 }}</span>
+      <img src="{{ section.settings.image1 | image_url }}" alt="">
+      <div class="card-text">{{ section.settings.title_1 }}</div>
+    </a>
+
+    <!-- CARD 2 -->
+    <a href="{{ section.settings.link2 }}" class="card">
+      <span class="pill">{{ section.settings.pill_text_2 }}</span>
+      <img src="{{ section.settings.image2 | image_url }}" alt="">
+      <div class="card-text">{{ section.settings.title_2 }}</div>
+    </a>
+
+    <!-- CARD 3 -->
+    <a href="{{ section.settings.link3 }}" class="card">
+      <span class="pill">{{ section.settings.pill_text_3 }}</span>
+      <img src="{{ section.settings.image3 | image_url }}" alt="">
+      <div class="card-text">{{ section.settings.title_3 }}</div>
+    </a>
+
+    <!-- CARD 4 -->
+    <a href="{{ section.settings.link4 }}" class="card">
+      <span class="pill">{{ section.settings.pill_text_4 }}</span>
+      <img src="{{ section.settings.image4 | image_url }}" alt="">
+      <div class="card-text">{{ section.settings.title_4 }}</div>
+    </a>
+
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Spotlight Bundles",
+  "settings": [
+    { "type": "text", "label": "Header", "id": "header" },
+    { "type": "text", "label": "Subheader", "id": "subheader" },
+
+    { "type": "image_picker", "label": "Image 1", "id": "image1" },
+    { "type": "text", "label": "Pill Text 1", "id": "pill_text_1" },
+    { "type": "text", "label": "Title 1", "id": "title_1" },
+    { "type": "url", "label": "Card Link 1", "id": "link1" },
+
+    { "type": "image_picker", "label": "Image 2", "id": "image2" },
+    { "type": "text", "label": "Pill Text 2", "id": "pill_text_2" },
+    { "type": "text", "label": "Title 2", "id": "title_2" },
+    { "type": "url", "label": "Card Link 2", "id": "link2" },
+
+    { "type": "image_picker", "label": "Image 3", "id": "image3" },
+    { "type": "text", "label": "Pill Text 3", "id": "pill_text_3" },
+    { "type": "text", "label": "Title 3", "id": "title_3" },
+    { "type": "url", "label": "Card Link 3", "id": "link3" },
+
+    { "type": "image_picker", "label": "Image 4", "id": "image4" },
+    { "type": "text", "label": "Pill Text 4", "id": "pill_text_4" },
+    { "type": "text", "label": "Title 4", "id": "title_4" },
+    { "type": "url", "label": "Card Link 4", "id": "link4" }
+  ],
+  "presets": [
+    { "name": "Spotlight Bundles" }
+  ]
+}
+{% endschema %}

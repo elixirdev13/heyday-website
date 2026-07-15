@@ -1,0 +1,49 @@
+@font-face {
+    font-family: 'SadinesSans';
+    src: url('https://cdn.shopify.com/s/files/1/0673/0045/8748/files/SadinesSans.woff2?v=1706508258') format('woff2'),
+         url('https://cdn.shopify.com/s/files/1/0673/0045/8748/files/SadinesSans.woff?v=1706508258') format('woff'),
+         url('https://cdn.shopify.com/s/files/1/0673/0045/8748/files/SadinesSans.ttf?v=1706508258') format('ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'MajesticKingdome';
+    src: url('https://cdn.shopify.com/s/files/1/0673/0045/8748/files/Majestic_Kingdome.woff2?v=1711415392') format('woff2'),
+         url('https://cdn.shopify.com/s/files/1/0673/0045/8748/files/Majestic_Kingdome.woff?v=1711415224') format('woff'),
+         url('https://cdn.shopify.com/s/files/1/0673/0045/8748/files/Majestic_Kingdome.ttf?v=1711415392') format('ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.type-banner {
+  flex: 1 0 100%;
+}
+
+.footer__title {
+  font-weight: bold;
+  font-size: var(--typeBaseSize);
+}
+.newsletter__input-group {
+max-width:100%;
+width: 100%;
+}
+.footer__blocks {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-between;
+}
+.underfooter-logo {
+     padding-left: 0px;
+     
+}
+.product-grid-item {
+    width: 100%;
+    background-color: transparent;
+}
+header-section {
+    margin-top: -1px;
+}
+.site-nav__link {
+    font-size: 14px;
+}

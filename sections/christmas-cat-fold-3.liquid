@@ -1,0 +1,255 @@
+<style>
+  html {
+  scroll-behavior: smooth;
+}
+
+.gift-collections {
+  text-align: center;
+  padding: 100px 0px 0px 0px;
+}
+.gift-collections p{
+  margin-bottom: 45px;
+  max-width: 850px;
+  margin-left:auto;
+  margin-right:auto;
+  color:#232323;
+}
+.parent {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+  gap: 16px;
+  margin: auto;
+}
+
+.div1, .div2, .div3, .div4, .div5 {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  height: 320px;
+}
+
+/* GRID POSITIONS */
+.div1 { grid-column: span 5; grid-row: span 3; }
+.div2 { grid-column: span 3; grid-row: span 3; }
+.div3 { grid-column: span 4; grid-row: span 3; }
+.div5 { grid-column: span 6; grid-row: span 3; }
+.div4 { grid-column: span 6; grid-row: span 3; }
+
+.image-wrapper {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.gift-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+/* Overlay – stays full-size, content starts bottom-left */
+.gift-overlay {
+  position: absolute;
+  inset: 0;
+  padding: 20px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+
+  text-align: left;
+  background: rgba(0,0,0,0.3);
+}
+
+/* Title starts at bottom-left, no space above it */
+.gift-overlay h3 {
+  position:absolute;
+  bottom: 10px;
+  margin: 0;
+  font-size: 32px;
+  font-weight: 800;
+  color: #fff;
+  transition: bottom 0.4s ease;
+}
+
+.gift-item:hover .gift-overlay h3 {
+  bottom: 130px;
+}
+
+/* Hidden initially */
+.gift-overlay p,
+.gift-overlay .gift-btn {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: transform 0.4s ease, opacity 0.4s ease;
+}
+
+.gift-item:hover .gift-overlay p,
+.gift-item:hover .gift-overlay .gift-btn {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.gift-overlay p {
+  margin: 5px 0 10px;
+  font-size: 20px;
+  max-width:600px;
+  line-height:20px;
+  color: #fff;
+}
+
+/* BUTTON LINK STYLE */
+.gift-btn {
+  background: #123d21;
+  color: #fff;
+  border: none;
+  padding: 8px 70px;
+  border-radius: 22px;
+  cursor: pointer;
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.gift-btn:hover {
+  background: rgb(13, 44, 24);
+  color:white;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .parent { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
+  .div1, .div2, .div3, .div4, .div5 { grid-column: span 1 !important; grid-row: auto; height: 260px; }
+}
+
+@media (max-width: 600px) {
+  .parent { grid-template-columns: 1fr; }
+  .div1, .div2, .div3, .div4, .div5 { height: 220px; }
+  .gift-overlay h3 { font-size: 16px; }
+  .gift-overlay p { font-size: 14px; max-width: 100%; }
+  .gift-btn { font-size: 14px; padding: 8px 14px; }
+  .gift-collections{
+    padding: 60px 20px;
+  }
+}
+
+</style>
+
+<div class="gift-collections" id="holiday-exclusives">
+  <h2>{{ section.settings.section_title }}</h2>
+  <p>{{ section.settings.section_description }}</p>
+
+  <div class="parent">
+
+    <div class="gift-item div1">
+      <div class="image-wrapper">
+        {% if section.settings.food_grocery_image %}
+          <img src="{{ section.settings.food_grocery_image | image_url }}" alt="{{ section.settings.food_grocery_title }}">
+        {% endif %}
+        <div class="gift-overlay">
+          <h3>{{ section.settings.food_grocery_title }}</h3>
+          <p>{{ section.settings.food_grocery_desc }}</p>
+          <a href="{{ section.settings.food_grocery_btn_link }}" class="gift-btn">{{ section.settings.food_grocery_btn_text }}</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="gift-item div2">
+      <div class="image-wrapper">
+        {% if section.settings.refillery_image %}
+          <img src="{{ section.settings.refillery_image | image_url }}" alt="{{ section.settings.refillery_title }}">
+        {% endif %}
+        <div class="gift-overlay">
+          <h3>{{ section.settings.refillery_title }}</h3>
+          <p>{{ section.settings.refillery_desc }}</p>
+          <a href="{{ section.settings.refillery_btn_link }}" class="gift-btn">{{ section.settings.refillery_btn_text }}</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="gift-item div3">
+      <div class="image-wrapper">
+        {% if section.settings.vms_image %}
+          <img src="{{ section.settings.vms_image | image_url }}" alt="{{ section.settings.vms_title }}">
+        {% endif %}
+        <div class="gift-overlay">
+          <h3>{{ section.settings.vms_title }}</h3>
+          <p>{{ section.settings.vms_desc }}</p>
+          <a href="{{ section.settings.vms_btn_link }}" class="gift-btn">{{ section.settings.vms_btn_text }}</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="gift-item div5">
+      <div class="image-wrapper">
+        {% if section.settings.frozen_image %}
+          <img src="{{ section.settings.frozen_image | image_url }}" alt="{{ section.settings.frozen_title }}">
+        {% endif %}
+        <div class="gift-overlay">
+          <h3>{{ section.settings.frozen_title }}</h3>
+          <p>{{ section.settings.frozen_desc }}</p>
+          <a href="{{ section.settings.frozen_btn_link }}" class="gift-btn">{{ section.settings.frozen_btn_text }}</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="gift-item div4">
+      <div class="image-wrapper">
+        {% if section.settings.lifestyle_image %}
+          <img src="{{ section.settings.lifestyle_image | image_url }}" alt="{{ section.settings.lifestyle_title }}">
+        {% endif %}
+        <div class="gift-overlay">
+          <h3>{{ section.settings.lifestyle_title }}</h3>
+          <p>{{ section.settings.lifestyle_desc }}</p>
+          <a href="{{ section.settings.lifestyle_btn_link }}" class="gift-btn">{{ section.settings.lifestyle_btn_text }}</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Holiday Gift Collections",
+  "settings": [
+    { "type": "text", "label": "Section Title", "id": "section_title",  },
+    { "type": "textarea", "label": "Description", "id": "section_description", },
+
+    { "type": "image_picker", "id": "food_grocery_image", "label": "Image for Food and Grocery Gifts" },
+    { "type": "text", "id": "food_grocery_title", "label": "Food and Grocery Gifts Title", },
+    { "type": "textarea", "id": "food_grocery_desc", "label": "Food and Grocery Description", },
+    { "type": "text", "id": "food_grocery_btn_text", "label": "Food and Grocery Button Text", "default": "Shop Now" },
+    { "type": "url", "id": "food_grocery_btn_link", "label": "Food and Grocery Button Link" },
+
+    { "type": "image_picker", "id": "refillery_image", "label": "Image for Refillery Gifts" },
+    { "type": "text", "id": "refillery_title", "label": "Refillery Gifts Title",  },
+    { "type": "textarea", "id": "refillery_desc", "label": "Refillery Description", },
+    { "type": "text", "id": "refillery_btn_text", "label": "Refillery Button Text", "default": "Shop Now" },
+    { "type": "url", "id": "refillery_btn_link", "label": "Refillery Button Link" },
+
+    { "type": "image_picker", "id": "vms_image", "label": "Image for VMS/Supplements Gifts" },
+    { "type": "text", "id": "vms_title", "label": "VMS/Supplements Gifts Title",},
+    { "type": "textarea", "id": "vms_desc", "label": "VMS Description", },
+    { "type": "text", "id": "vms_btn_text", "label": "VMS Button Text", "default": "Shop Now" },
+    { "type": "url", "id": "vms_btn_link", "label": "VMS Button Link" },
+
+    { "type": "image_picker", "id": "frozen_image", "label": "Image for Frozen Gifts" },
+    { "type": "text", "id": "frozen_title", "label": "Frozen Gifts Title",},
+    { "type": "textarea", "id": "frozen_desc", "label": "Frozen Description", },
+    { "type": "text", "id": "frozen_btn_text", "label": "Frozen Button Text", "default": "Shop Now" },
+    { "type": "url", "id": "frozen_btn_link", "label": "Frozen Button Link" },
+
+    { "type": "image_picker", "id": "lifestyle_image", "label": "Image for Curated Lifestyle Gift Boxes" },
+    { "type": "text", "id": "lifestyle_title", "label": "Lifestyle Gifts Title", },
+    { "type": "textarea", "id": "lifestyle_desc", "label": "Lifestyle Description",},
+    { "type": "text", "id": "lifestyle_btn_text", "label": "Lifestyle Button Text", "default": "Shop Now" },
+    { "type": "url", "id": "lifestyle_btn_link", "label": "Lifestyle Button Link" }
+  ],
+  "presets": [ { "name": "Heyday Gift Collections" } ]
+}
+{% endschema %}

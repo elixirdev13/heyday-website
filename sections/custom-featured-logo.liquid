@@ -1,0 +1,159 @@
+<style>
+   #shopify-section-{{ section.id }} .custom-featured-logo {
+    overflow: hidden;
+    background-color: #FDF7EE;
+    padding: 50px 0;
+    white-space: nowrap;
+    font-family: "MajesticKingdome";
+  }
+
+  #shopify-section-{{ section.id }} .custom-featured-logo  h2 {
+    font-family: "MajesticKingdome";
+  }
+
+  #shopify-section-{{ section.id }} .custom-featured-logo img {
+    display: block;
+    max-height: 100px;
+    /* max-width: 100%; */
+    vertical-align: middle;
+  }
+  #shopify-section-{{ section.id }} .swiper-slide {
+      display: flex !important;
+      justify-content: center;
+      align-items: center;
+      margin: 0 10px;
+      height: 200px;
+  }
+</style>
+
+{%- if section.settings.divider -%}<div class="section--divider">{%- endif -%}
+<div class="custom-featured-logo">
+  {%- if section.settings.title != blank -%}
+    <div class="section-header text-{{ section.settings.heading_position }}">
+      <h2 class="section-header__title {{ section.settings.heading_size }}">{{ section.settings.title | escape }}</h2>
+    </div>
+  {%- endif -%}
+
+  <div class="swiper-container">
+    <div class="swiper-wrapper">
+      {% for block in section.blocks %}
+        <div class="swiper-slide">
+          <a href="{{ block.settings.logo_url }}">
+            <img src="{{ block.settings.logo | img_url: '300x' }}" alt="{{ block.settings.logo_alt }}">
+          </a>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{%- if section.settings.divider -%}</div>{%- endif -%}
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+      var swiper = new Swiper('.swiper-container', {
+          loop: true,
+          slidesPerView: 5,
+          spaceBetween: 10,
+          centeredSlides: true,
+          autoplay: {
+              delay: 0,
+              disableOnInteraction: false,
+          },
+          speed: 3000,
+      });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Featured Logos",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "t:labels.heading",
+      "default": "Our brands"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "label": "t:labels.heading_size",
+      "default": "h2",
+      "options": [
+        {
+          "value": "h3",
+          "label": "t:labels.sizes.small"
+        },
+        {
+          "value": "h2",
+          "label": "t:labels.sizes.medium"
+        },
+        {
+          "value": "h1",
+          "label": "t:labels.sizes.large"
+        },
+        {
+          "value": "h0",
+          "label": "t:labels.sizes.extra_large"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "heading_position",
+      "label": "t:labels.heading_position",
+      "default": "left",
+      "options": [
+        {
+          "value": "left",
+          "label": "t:labels.alignments.left"
+        },
+        {
+          "value": "center",
+          "label": "t:labels.alignments.center"
+        },
+        {
+          "value": "right",
+          "label": "t:labels.alignments.right"
+        }
+      ]
+    },
+    {
+      "type": "checkbox",
+      "id": "divider",
+      "label": "t:actions.show_section_divider",
+      "default": false
+    }
+  ],
+  "blocks": [
+    {
+      "type": "logo",
+      "name": "Logo",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "logo",
+          "label": "Logo Image"
+        },
+        {
+          "type": "text",
+          "id": "logo_alt",
+          "label": "Alt Text",
+          "default": "Logo"
+        },
+        {
+          "type": "url",
+          "id": "logo_url",
+          "label": "Logo Url"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Featured Logos",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}
