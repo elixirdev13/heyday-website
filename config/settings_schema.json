@@ -3,9 +3,7 @@
     "name": "theme_info",
     "theme_name": "Ekko",
     "theme_author": "NeXcode Solutions",
-    "theme_version": "5.1.0",
-    "theme_documentation_url": "https://archetypethemes.co/blogs/expanse",
-    "theme_support_url": "https://archetypethemes.co/pages/support#expanse"
+    "theme_version": "1.0.0"
   },
   {
     "name": "t:labels.colors",
