@@ -458,6 +458,8 @@
         "@media (max-width: 450px) {.featured-hero-content {text-align: center; align-items: center; }}"
       ],
       "settings": {
+        "image": "shopify://shop_images/heyday-essentials-running_1.jpg",
+        "image2": "shopify://shop_images/heyday-essentials-bg-blur_1.jpg",
         "heading": "Heyday Essentials",
         "text": "From essential vitamins to targeted supplements, our in-house line is meticulously formulated to support your well-being journey.",
         "button_link": "shopify://collections/heyday-essentials",
