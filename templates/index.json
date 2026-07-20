@@ -722,6 +722,7 @@
         "team_member_NEgBfM": {
           "type": "team_member",
           "settings": {
+            "image": "shopify://shop_images/IMG_6618.heic",
             "name": "Maria Criszel Joy",
             "title": "Registered Nutritionist-Dietitian"
           }
@@ -729,6 +730,7 @@
         "team_member_MHYzcF": {
           "type": "team_member",
           "settings": {
+            "image": "shopify://shop_images/IMG_6986.jpg",
             "name": "Micaela Plata",
             "title": "Registered Pharmacist"
           }
@@ -736,6 +738,7 @@
         "team_member_nxXexg": {
           "type": "team_member",
           "settings": {
+            "image": "shopify://shop_images/IMG_6676_43976a48-7280-4662-b172-4b598a77243f.heic",
             "name": "Dharyl Pagapang",
             "title": "Registered Pharmacist"
           }
@@ -749,7 +752,8 @@
       "settings": {
         "title": "Get To Know Our Wellness Team",
         "cta_text": "Schedule a consultation today",
-        "cta_link": "shopify://pages/nutritionist"
+        "cta_link": "shopify://pages/nutritionist",
+        "section_background_image": "shopify://shop_images/nutritionist-bg_1.png"
       }
     },
     "21016d6b-d8f5-4f06-96a0-11943b0b8329": {
