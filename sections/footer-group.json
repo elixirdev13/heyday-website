@@ -92,7 +92,7 @@
           "type": "menu",
           "settings": {
             "title": "",
-            "menu": "footer",
+            "menu": "customer-service",
             "enable_account_link": false
           }
         },
