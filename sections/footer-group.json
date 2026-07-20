@@ -1,1 +1,146 @@
-{"type":"footer","name":"t:labels.footer_group","sections":{"footer-promotions":{"type":"footer-promotions","blocks":{"footer-promotions-0":{"type":"promotion","settings":{"enable_image":true,"image_mask":"none","title":"Site-wide promotion","text":"<p>Use this section to promote content throughout every page of your site. Add images for further impact.<\/p>","button_label":"Optional button","button_link":"","color_scheme":"1"}},"footer-promotions-1":{"type":"promotion","settings":{"enable_image":true,"image_mask":"none","title":"Site-wide promotion","text":"<p>Use this section to promote content throughout every page of your site. Add images for further impact.<\/p>","button_label":"Optional button","button_link":"","color_scheme":"3"}},"footer-promotions-2":{"type":"promotion","settings":{"enable_image":true,"image_mask":"none","title":"Site-wide promotion","text":"<p>Use this section to promote content throughout every page of your site. Add images for further impact.<\/p>","button_label":"Optional button","button_link":"","color_scheme":"2"}}},"block_order":["footer-promotions-0","footer-promotions-1","footer-promotions-2"],"disabled":true,"settings":{"hide_homepage":false}},"footer":{"type":"footer","blocks":{"image_XFgpU7":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/RGB-Heyday-Long_Logo_-_2_-_Day_Green_2.png","image_mask":"none","link":"\/"}},"menu_J4xdtA":{"type":"menu","settings":{"title":"Company","menu":"company-1","enable_account_link":false}},"footer-0":{"type":"menu","settings":{"title":"","menu":"product-categories","enable_account_link":false}},"menu_7FCdDJ":{"type":"menu","settings":{"title":"","menu":"footer","enable_account_link":false}},"footer-1":{"type":"contact","settings":{"phone":"","contact":"","chat":"","enable_social":false}},"footer-2":{"type":"payment","disabled":true,"settings":{"show_payment_icons":true,"show_locale_selector":true,"show_currency_selector":true,"show_currency_flags":true}}},"block_order":["image_XFgpU7","menu_J4xdtA","footer-0","menu_7FCdDJ","footer-1","footer-2"],"custom_css":[".footer__section_bottom {padding: 10px 0; background-color: #164734; color: #fff;}",".footer__section--menus {padding-top: 80px;}",".image-wrap {background: none;}"],"settings":{"show_newsletter":false,"newsletter_richtext":"<p>Subscribe today to hear first about our sales<\/p>","footer_main_menu":false,"show_copyright":true,"copyright_text":"© Copyright 2026 All Rights Reserved by Heyday","policies_menu":""}}},"order":["footer-promotions","footer"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "type": "footer",
+  "name": "t:labels.footer_group",
+  "sections": {
+    "footer-promotions": {
+      "type": "footer-promotions",
+      "blocks": {
+        "footer-promotions-0": {
+          "type": "promotion",
+          "settings": {
+            "enable_image": true,
+            "image_mask": "none",
+            "title": "Site-wide promotion",
+            "text": "<p>Use this section to promote content throughout every page of your site. Add images for further impact.</p>",
+            "button_label": "Optional button",
+            "button_link": "",
+            "color_scheme": "1"
+          }
+        },
+        "footer-promotions-1": {
+          "type": "promotion",
+          "settings": {
+            "enable_image": true,
+            "image_mask": "none",
+            "title": "Site-wide promotion",
+            "text": "<p>Use this section to promote content throughout every page of your site. Add images for further impact.</p>",
+            "button_label": "Optional button",
+            "button_link": "",
+            "color_scheme": "3"
+          }
+        },
+        "footer-promotions-2": {
+          "type": "promotion",
+          "settings": {
+            "enable_image": true,
+            "image_mask": "none",
+            "title": "Site-wide promotion",
+            "text": "<p>Use this section to promote content throughout every page of your site. Add images for further impact.</p>",
+            "button_label": "Optional button",
+            "button_link": "",
+            "color_scheme": "2"
+          }
+        }
+      },
+      "block_order": [
+        "footer-promotions-0",
+        "footer-promotions-1",
+        "footer-promotions-2"
+      ],
+      "disabled": true,
+      "settings": {
+        "hide_homepage": false
+      }
+    },
+    "footer": {
+      "type": "footer",
+      "blocks": {
+        "image_XFgpU7": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/RGB-Heyday-Long_Logo_-_2_-_Day_Green_2.png",
+            "image_mask": "none",
+            "link": "/"
+          }
+        },
+        "menu_J4xdtA": {
+          "type": "menu",
+          "settings": {
+            "title": "Company",
+            "menu": "",
+            "enable_account_link": false
+          }
+        },
+        "footer-0": {
+          "type": "menu",
+          "settings": {
+            "title": "",
+            "menu": "",
+            "enable_account_link": false
+          }
+        },
+        "menu_7FCdDJ": {
+          "type": "menu",
+          "settings": {
+            "title": "",
+            "menu": "footer",
+            "enable_account_link": false
+          }
+        },
+        "footer-1": {
+          "type": "contact",
+          "settings": {
+            "phone": "",
+            "contact": "",
+            "chat": "",
+            "enable_social": false
+          }
+        },
+        "footer-2": {
+          "type": "payment",
+          "disabled": true,
+          "settings": {
+            "show_payment_icons": true,
+            "show_locale_selector": true,
+            "show_currency_selector": true,
+            "show_currency_flags": true
+          }
+        }
+      },
+      "block_order": [
+        "image_XFgpU7",
+        "menu_J4xdtA",
+        "footer-0",
+        "menu_7FCdDJ",
+        "footer-1",
+        "footer-2"
+      ],
+      "custom_css": [
+        ".footer__section_bottom {padding: 10px 0; background-color: #164734; color: #fff;}",
+        ".footer__section--menus {padding-top: 80px;}",
+        ".image-wrap {background: none;}"
+      ],
+      "settings": {
+        "show_newsletter": false,
+        "newsletter_richtext": "<p>Subscribe today to hear first about our sales</p>",
+        "footer_main_menu": false,
+        "show_copyright": true,
+        "copyright_text": "© Copyright 2026 All Rights Reserved by Heyday",
+        "policies_menu": ""
+      }
+    }
+  },
+  "order": [
+    "footer-promotions",
+    "footer"
+  ]
+}
