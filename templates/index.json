@@ -534,6 +534,7 @@
           "type": "text_block",
           "settings": {
             "enable_image": true,
+            "image": "shopify://shop_images/Safe_and_Trusted_Brands.svg",
             "image_mask": "none",
             "image_width": 120,
             "title": "",
@@ -546,6 +547,7 @@
           "type": "text_block",
           "settings": {
             "enable_image": true,
+            "image": "shopify://shop_images/Complete_Wellness_Choices_for_Healthy_Living.svg",
             "image_mask": "none",
             "image_width": 90,
             "title": "",
@@ -558,6 +560,7 @@
           "type": "text_block",
           "settings": {
             "enable_image": true,
+            "image": "shopify://shop_images/Satisfaction_Guaranteed.svg",
             "image_mask": "none",
             "image_width": 120,
             "title": "",
@@ -570,6 +573,7 @@
           "type": "text_block",
           "settings": {
             "enable_image": true,
+            "image": "shopify://shop_images/Free_Shipping_Same_Day_Delivery.svg",
             "image_mask": "none",
             "image_width": 120,
             "title": "",
@@ -582,6 +586,7 @@
           "type": "text_block",
           "settings": {
             "enable_image": true,
+            "image": "shopify://shop_images/Made_in_Europe_for_Heyday_Essentials.svg",
             "image_mask": "none",
             "image_width": 120,
             "title": "",
