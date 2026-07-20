@@ -815,6 +815,7 @@
         "logo_RNV8Qw": {
           "type": "logo",
           "settings": {
+            "logo": "shopify://shop_images/active-logo_1.png",
             "logo_alt": "Logo",
             "logo_url": "https://mega-onemega.com/5-top-rated-health-and-wellness-groceries-in-metro-manila/"
           }
@@ -822,6 +823,7 @@
         "logo_J43zRm": {
           "type": "logo",
           "settings": {
+            "logo": "shopify://shop_images/manila-bulletin-logo_1.png",
             "logo_alt": "Logo",
             "logo_url": "https://mb.com.ph/2024/3/4/why-you-should-check-out-this-360-wellness-superstore"
           }
@@ -829,6 +831,7 @@
         "logo_r6gHb6": {
           "type": "logo",
           "settings": {
+            "logo": "shopify://shop_images/business-world-logo_1.png",
             "logo_alt": "Logo",
             "logo_url": "https://www.bworldonline.com/arts-and-leisure/2024/02/08/574177/teas-and-veg-and-soap-and-refills-oh-my/?amp"
           }
@@ -836,6 +839,7 @@
         "logo_i3mk3X": {
           "type": "logo",
           "settings": {
+            "logo": "shopify://shop_images/metro-logo_1.png",
             "logo_alt": "Logo",
             "logo_url": "https://metro.style/wellness/health/heyday-wellness-superstore-launch-glorietta/37479"
           }
@@ -843,6 +847,7 @@
         "logo_VNCfzz": {
           "type": "logo",
           "settings": {
+            "logo": "shopify://shop_images/life-logo_1.png",
             "logo_alt": "Logo",
             "logo_url": "https://philstarlife.com/self/772948-this-new-eco-conscious-store-makati-sells-organic-cruelty-free-affordable-goods#"
           }
@@ -850,6 +855,7 @@
         "logo_jd7BdP": {
           "type": "logo",
           "settings": {
+            "logo": "shopify://shop_images/when-in-mnl-logo_1.png",
             "logo_alt": "Logo",
             "logo_url": "https://www.wheninmanila.com/heyday-now-open-glorietta/"
           }
