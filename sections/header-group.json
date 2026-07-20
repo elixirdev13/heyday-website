@@ -78,7 +78,7 @@
           "type": "megamenulink",
           "settings": {
             "menu_item": "Shop By Category",
-            "megamenu_main_menu_link_list": "",
+            "megamenu_main_menu_link_list": "main-menu-1",
             "button_url_1": "",
             "button_url_2": "",
             "button_url_3": "",
@@ -150,7 +150,7 @@
         ".site-nav__item:nth-of-type(6) > a {color: #fff !important; height: 2.25em; padding-top: 0.35em; padding-bottom: 0em;}"
       ],
       "settings": {
-        "main_menu_link_list": "",
+        "main_menu_link_list": "main-menu-1",
         "hover_menu": true,
         "main_menu_alignment": "left-center",
         "mega_products": false,
