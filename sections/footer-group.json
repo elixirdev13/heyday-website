@@ -76,7 +76,7 @@
           "type": "menu",
           "settings": {
             "title": "Company",
-            "menu": "",
+            "menu": "company",
             "enable_account_link": false
           }
         },
