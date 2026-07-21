@@ -478,7 +478,7 @@
         "title": "Our Products",
         "sub_title": "",
         "fc_custom_button_label": "SHOP ALL",
-        "fc_custom_button_link": "shopify://collections/all-products",
+        "fc_custom_button_link": "shopify://collections",
         "heading_size": "h1",
         "heading_position": "center",
         "home_featured_products": "our-products",
