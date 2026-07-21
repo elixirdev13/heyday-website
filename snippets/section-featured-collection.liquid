@@ -48,7 +48,7 @@
 </style>
 
 {%- liquid
-  assign collection = collections[home_featured_products]
+  assign collection = home_featured_products
   assign product_limit = count | plus: 1
   if mobile_scrollable
     assign product_limit = count
@@ -131,7 +131,7 @@
             </p>
           {% endif %}
           {%- if view_all -%}
-            <a href="{{ collections[home_featured_products].url }}" class="section-header__link">
+            <a href="{{ collection.url }}" class="section-header__link">
               {{- 'actions.view_all' | t -}}
             </a>
           {%- endif -%}
@@ -158,9 +158,9 @@
         class="new-grid product-grid{% if mobile_scrollable %} scrollable-grid--small{% endif %}"
         data-view="{{ gridView }}"
       >
-        {%- if home_featured_products == blank
-          or collections[home_featured_products].empty?
-          or collections[home_featured_products].products_count == 0
+        {%- if collection == blank
+          or collection.empty?
+          or collection.products_count == 0
         -%}
           {%- liquid
             for i in (1..product_limit)
@@ -180,7 +180,7 @@
 
         {%- else -%}
           {%- liquid
-            for product in collections[home_featured_products].products limit: product_limit
+            for product in collection.products limit: product_limit
               assign item_classes = ''
               unless mobile_scrollable
                 if forloop.index > count
