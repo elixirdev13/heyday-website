@@ -58,6 +58,7 @@
         "image_FVTRPB": {
           "type": "image",
           "settings": {
+            "image": "shopify://shop_images/images_1.png",
             "link": "",
             "width": "50%",
             "alignment": "center"
@@ -93,6 +94,7 @@
           "type": "text_block",
           "settings": {
             "enable_image": true,
+            "image": "shopify://shop_images/Frame_56.svg",
             "image_mask": "none",
             "image_width": 80,
             "title": "",
@@ -105,6 +107,7 @@
           "type": "text_block",
           "settings": {
             "enable_image": true,
+            "image": "shopify://shop_images/Frame_55.svg",
             "image_mask": "none",
             "image_width": 80,
             "title": "",
@@ -117,6 +120,7 @@
           "type": "text_block",
           "settings": {
             "enable_image": true,
+            "image": "shopify://shop_images/Frame_56_1.svg",
             "image_mask": "none",
             "image_width": 80,
             "title": "",
@@ -189,6 +193,7 @@
         "@media (max-width: 400px) {.h2 {text-align: center; } p {text-align: center; }}"
       ],
       "settings": {
+        "image": "shopify://shop_images/heyday-philosophy.jpg",
         "image_mask": "none",
         "image2_mask": "none",
         "subtitle": "",
