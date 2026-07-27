@@ -93,8 +93,8 @@
         "megamenulink2_eWLRT3": {
           "type": "megamenulink2",
           "settings": {
-            "menu_item": "Shop by Brand",
-            "megamenu_main_menu_link_list": "",
+            "menu_item": "Shop By Product Type",
+            "megamenu_main_menu_link_list": "megamenu-shop-by-product-type",
             "title_1": "Heyday Essentials",
             "button_url_1": "shopify://collections/heyday-essentials",
             "title_2": "VPLab",
