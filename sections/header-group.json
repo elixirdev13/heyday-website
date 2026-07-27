@@ -106,19 +106,22 @@
             "button_url_8": ""
           }
         },
-        "megamenulink2_eWLRT3": {
+        "megamenulink2_k9BhGW": {
           "type": "megamenulink2",
           "settings": {
-            "menu_item": "Shop By Product Type",
-            "megamenu_main_menu_link_list": "megamenu-shop-by-product-type",
-            "title_1": "Heyday Essentials",
-            "button_url_1": "shopify://collections/heyday-essentials",
-            "title_2": "VPLab",
-            "button_url_2": "https://heyday.ph/pages/vplab",
+            "menu_item": "Shop by Brand",
+            "megamenu_main_menu_link_list": "",
+            "title_1": "VPLab",
+            "button_url_1": "shopify://collections/vplab",
+            "image_2": "shopify://shop_images/Vplab.jpg",
+            "title_2": "Nat&Form",
+            "button_url_2": "shopify://collections/nat-form",
+            "image_3": "shopify://shop_images/Nat_Form.jpg",
             "title_3": "Ultravit",
-            "button_url_3": "shopify://pages/ultravit",
-            "title_4": "Nat&Form",
-            "button_url_4": "https://heyday.ph/pages/nat-and-form",
+            "button_url_3": "shopify://collections/ultravit",
+            "image_4": "shopify://shop_images/Ultra_Vit.jpg",
+            "title_4": "",
+            "button_url_4": "",
             "title_5": "",
             "button_url_5": "",
             "title_6": "",
@@ -134,7 +137,7 @@
         "logo_gTciex",
         "megamenulink_QNhL3y",
         "megamenulink_edzARb",
-        "megamenulink2_eWLRT3"
+        "megamenulink2_k9BhGW"
       ],
       "custom_css": [
         ".site-nav__item:nth-of-type(5) {color: #fff; background-color: #164734; border-radius: 5em;}",
