@@ -90,6 +90,22 @@
             "button_url_8": ""
           }
         },
+        "megamenulink_edzARb": {
+          "type": "megamenulink",
+          "settings": {
+            "menu_item": "Shop By Product Type",
+            "megamenu_main_menu_link_list": "megamenu-shop-by-product-type",
+            "image_1": "shopify://shop_images/BestSeller.png",
+            "button_url_1": "",
+            "button_url_2": "",
+            "button_url_3": "",
+            "button_url_4": "",
+            "button_url_5": "",
+            "button_url_6": "",
+            "button_url_7": "",
+            "button_url_8": ""
+          }
+        },
         "megamenulink2_eWLRT3": {
           "type": "megamenulink2",
           "settings": {
@@ -112,37 +128,13 @@
             "title_8": "",
             "button_url_8": ""
           }
-        },
-        "megamenulink2_3xhagD": {
-          "type": "megamenulink2",
-          "disabled": true,
-          "settings": {
-            "menu_item": "Valentine's Exclusives",
-            "megamenu_main_menu_link_list": "",
-            "title_1": "Pre-Order",
-            "button_url_1": "https://heyday.ph/pages/valentines-day-pre-order",
-            "title_2": "",
-            "button_url_2": "",
-            "title_3": "",
-            "button_url_3": "",
-            "title_4": "",
-            "button_url_4": "",
-            "title_5": "",
-            "button_url_5": "",
-            "title_6": "",
-            "button_url_6": "",
-            "title_7": "",
-            "button_url_7": "",
-            "title_8": "",
-            "button_url_8": ""
-          }
         }
       },
       "block_order": [
         "logo_gTciex",
         "megamenulink_QNhL3y",
-        "megamenulink2_eWLRT3",
-        "megamenulink2_3xhagD"
+        "megamenulink_edzARb",
+        "megamenulink2_eWLRT3"
       ],
       "custom_css": [
         ".site-nav__item:nth-of-type(5) {color: #fff; background-color: #164734; border-radius: 5em;}",
