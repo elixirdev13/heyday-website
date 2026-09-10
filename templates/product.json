@@ -15,7 +15,7 @@
         "custom_info_KFAwWw": {
           "type": "custom_info",
           "settings": {
-            "custom_info": "<p></p><p></p>{{ product.metafields.custom.product_custom_info | metafield_tag }}<p></p>"
+            "custom_info": "{{ product.metafields.custom.product_custom_info | metafield_tag }}<p></p>"
           }
         },
         "variant_picker": {
@@ -24,7 +24,7 @@
             "variant_labels": true,
             "picker_type": "button",
             "product_dynamic_variants_enable": true,
-            "color_swatches": false
+            "color_swatches": true
           }
         },
         "price": {
@@ -95,7 +95,9 @@
         "inventory_status",
         "buy_buttons"
       ],
-      "custom_css": [".product-block--price {margin-bottom: 0px;}"],
+      "custom_css": [
+        ".product-block--price {margin-bottom: 0px;}"
+      ],
       "settings": {
         "sku_enable": false,
         "image_position": "left",
@@ -271,7 +273,6 @@
       "disabled": true,
       "settings": {
         "title": "Let’s kick off your health journey with a quiz!",
-        "image": "shopify://shop_images/quiz-iteration.jpg",
         "image_max_width": 40,
         "cta_text": "Start Answering",
         "cta_link": ""
