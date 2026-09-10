@@ -123,21 +123,7 @@
         -%}
       {%- endif -%}
 
-      {%- if isModal -%}
-        <p class="h2 product-single__title">
-          {{ product.title }}
-        </p>
-      {%- else -%}
-        <h1 class="h2 product-single__title">
-          {%- unless product.empty? -%}
-            {{ product.title }}
-          {%- else -%}
-            {{ 'labels.example_product' | t }}
-          {%- endunless -%}
-        </h1>
-      {%- endif -%}
-
-      {%- if vendor_enable or sku_enable -%}
+            {%- if vendor_enable or sku_enable -%}
         <div class="product-single__vendor-sku">
           {%- if vendor_enable -%}
             <span class="product-single__vendor">
@@ -159,6 +145,22 @@
           {%- endif -%}
         </div>
       {%- endif -%}
+
+      {%- if isModal -%}
+        <p class="h2 product-single__title">
+          {{ product.title }}
+        </p>
+      {%- else -%}
+        <h1 class="h2 product-single__title">
+          {%- unless product.empty? -%}
+            {{ product.title }}
+          {%- else -%}
+            {{ 'labels.example_product' | t }}
+          {%- endunless -%}
+        </h1>
+      {%- endif -%}
+
+
     {%- endcapture -%}
 
     <div class="page-content page-content--product {% if media_gallery_layout %}page-content--{{ mobile_layout }}{% endif %}">
