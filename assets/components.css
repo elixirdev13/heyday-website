@@ -14,36 +14,6 @@
     font-style: normal;
 }
 
-/*Start of Custom styles for product-form.liquid (Buy Buttons)*/
-.payment-buttons--row {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  gap: 10px;
-  align-items: stretch;
-}
-
-.payment-buttons--row .btn.add-to-cart {
-  flex: 1 1 0;
-  width: auto; /* override btn--full's 100% width */
-  margin: 0;
-}
-
-.payment-buttons--row .shopify-payment-button {
-  flex: 1 1 0;
-}
-
-.payment-buttons--row .shopify-payment-button__button {
-  width: 100% !important;
-}
-
-/* Optional: stack on very small screens if row gets too cramped */
-@media screen and (max-width: 480px) {
-  .payment-buttons--row {
-    flex-direction: column;
-  }
-}
-/*End of Custom styles for product-form.liquid (Buy Buttons)*/
 
 :root {
   --gutter: 30px;
