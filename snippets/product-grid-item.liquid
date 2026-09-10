@@ -263,13 +263,13 @@
               width: 60%;
             }
           </style>
-          <div class="billease-product-skin-container">
+          {% comment %} <div class="billease-product-skin-container">
             <img
               class="billease-product-skin"
               src="https://cdn.shopify.com/s/files/1/0045/9266/4649/files/Product_Skins.png?v=1730872563"
               alt="billease-skin"
             >
-          </div>
+          </div> {% endcomment %}
           <div class="grid-product__tags">
             {%- if has_custom_label -%}
               {%- assign labels = custom_labels | split: ',' -%}
