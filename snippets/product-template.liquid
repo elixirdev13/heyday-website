@@ -333,66 +333,131 @@
                           >/{{ unit_price_base_unit }}
                         </div>
                       </div>
-                      <div id="billease_installments_widget_product_page_{{ current_variant.id }}"></div>
+                      <div class="installment-accordion" id="installmentAccordion-{{ current_variant.id }}">
+                      <button
+                        type="button"
+                        class="installment-accordion__toggle"
+                        aria-expanded="false"
+                        aria-controls="installmentAccordionContent-{{ current_variant.id }}"
+                      >
+                        <div class="installment-accordion__header-left">
+                          <span class="installment-accordion__title">
+                            Installment payment options available
+                          </span>
+                        </div>
+
+                        <span class="installment-accordion__icon">
+                          <svg width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                            <path d="M5 12L10 7L15 12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                          </svg>
+                        </span>
+                      </button>
+
+                      <div
+                        id="installmentAccordionContent-{{ current_variant.id }}"
+                        class="installment-accordion__content"
+                        hidden
+                      >
+                        <div class="installment-accordion__body">
+                          <div class="installment-option installment-option--billease">
+                            <div class="installment-option__logo">
+                              <img
+                                src="https://s3-ap-southeast-1.amazonaws.com/static.billease.ph/public/billease-logo.svg"
+                                alt="Billease"
+                                width="65"
+                                loading="lazy"
+                              >
+                            </div>
+
+                            <div
+                              class="installment-option__text"
+                              id="billease_installments_widget_product_page_{{ current_variant.id }}"
+                            ></div>
+                          </div>
+                        </div>
+                      </div>
+
+                      
+
+                    </div>
                       <script>
-  function start() {
-    const marketing_link = 'https://billease.ph';  // Replace with your own page
-    const is_pay_in_four = false;  // Set to true to use pay in 4
-    const dp_pct = 0;  // Replace with your desired down payment percentage (0-100)
-    const is_zero_interest = true;  // Set to true to use 0% interest
-    const product_id = {{ current_variant.id }};
-    const price = {{ current_variant.price }} / 100;
-    const billease_logo = `<img src="https://s3-ap-southeast-1.amazonaws.com/static.billease.ph/public/billease-logo.svg" width="70" style="display:inline-block;"/>`;
-    const storage_key = 'BILLEASE_INSTALLMENT_FACTOR';
-    const learn_more = `<a target="_blank" href="${marketing_link}" style="text-decoration: underline; color: #203AA9">Learn More</a>`;
-    
-    // Determine installments based on price
-    let installments;
-    if (price >= 2000 && price < 5000) {
-      installments = 3; // 3 months for 2k-5k
-    } else if (price >= 5000) {
-      installments = 6; // 6 months for 5k and above
-    } else {
-      installments = 1; // Default to 1 month if price is below 2k
-    }
+                        function start() {
+                          const marketing_link = 'https://billease.ph';  // Replace with your own page
+                          const is_pay_in_four = false;  // Set to true to use pay in 4
+                          const dp_pct = 0;  // Replace with your desired down payment percentage (0-100)
+                          const is_zero_interest = true;  // Set to true to use 0% interest
+                          const product_id = {{ current_variant.id }};
+                          const price = {{ current_variant.price }} / 100;
+                          const billease_logo = `<img src="https://s3-ap-southeast-1.amazonaws.com/static.billease.ph/public/billease-logo.svg" width="70" style="display:inline-block;"/>`;
+                          const storage_key = 'BILLEASE_INSTALLMENT_FACTOR';
+                          const learn_more = `<a target="_blank" href="${marketing_link}" style="text-decoration: underline; color: #203AA9">Learn More</a>`;
+                          
+                          // Determine installments based on price
+                          let installments;
+                          if (price >= 2000 && price < 5000) {
+                            installments = 3; // 3 months for 2k-5k
+                          } else if (price >= 5000) {
+                            installments = 6; // 6 months for 5k and above
+                          } else {
+                            installments = 1; // Default to 1 month if price is below 2k
+                          }
 
-    function round_up(val) {
-      return val % 100 === 0 ? val : (val + 100) - (val % 100);
-    }
+                          function round_up(val) {
+                            return val % 100 === 0 ? val : (val + 100) - (val % 100);
+                          }
 
-    function insert_billease_text(installment_factor = null) {
-      const cashout = is_pay_in_four ? 0 : (dp_pct ? round_up(price * (dp_pct / 100)) : 0);
-      const financed_amount = price - cashout;
-      const amount = Math.ceil(is_pay_in_four ? (price / 4) : (installment_factor ? (installment_factor[installments] * financed_amount) : (financed_amount / installments)));
-      const billease_text = document.getElementById(`billease_installments_widget_product_page_${product_id}`);
-      let installment_text;
-      if (is_pay_in_four) {
-        installment_text = 'Or <strong>4 payments</strong>';
-      } else if (cashout) {
-        installment_text = `Or pay <strong>₱${cashout.toLocaleString()} upfront</strong>, the rest in <strong>${installments} months</strong>`;
-      } else {
-        installment_text = `Or <strong>${installments} months</strong>`;
-      }
-      billease_text.innerHTML = `<span style="vertical-align: middle">${installment_text} for only <strong>₱${amount.toLocaleString()}</strong> with ${billease_logo}. ${learn_more}.</span>`;
-    }
+                          function insert_billease_text(installment_factor = null) {
+                            const cashout = is_pay_in_four ? 0 : (dp_pct ? round_up(price * (dp_pct / 100)) : 0);
+                            const financed_amount = price - cashout;
+                            const amount = Math.ceil(is_pay_in_four ? (price / 4) : (installment_factor ? (installment_factor[installments] * financed_amount) : (financed_amount / installments)));
+                            const billease_text = document.getElementById(`billease_installments_widget_product_page_${product_id}`);
+                            let installment_text;
+                            if (is_pay_in_four) {
+                              installment_text = 'Or <strong>4 payments</strong>';
+                            } else if (cashout) {
+                              installment_text = `Or pay <strong>₱${cashout.toLocaleString()} upfront</strong>, the rest in <strong>${installments} months</strong>`;
+                            } else {
+                              installment_text = `Or <strong>${installments} months</strong>`;
+                            }
+                            billease_text.innerHTML = `<span style="vertical-align: middle">${installment_text} for only <strong>₱${amount.toLocaleString()}</strong> with ${billease_logo}. ${learn_more}.</span>`;
+                          }
 
-    if (is_pay_in_four || is_zero_interest) {
-      insert_billease_text();
-    } else {
-      const billease_installment_factor = localStorage.getItem(storage_key);
-      if (billease_installment_factor) {
-        insert_billease_text(JSON.parse(billease_installment_factor));
-      } else {
-        fetch('https://billease.ph/billease_installments.json')
-            .then(response => response.json())
-            .then(data => {
-              localStorage.setItem(storage_key, JSON.stringify(data.installment_factor));
-              insert_billease_text(data.installment_factor);
-            });
-      }
-    }
-  }
-  start();
+                          if (is_pay_in_four || is_zero_interest) {
+                            insert_billease_text();
+                          } else {
+                            const billease_installment_factor = localStorage.getItem(storage_key);
+                            if (billease_installment_factor) {
+                              insert_billease_text(JSON.parse(billease_installment_factor));
+                            } else {
+                              fetch('https://billease.ph/billease_installments.json')
+                                  .then(response => response.json())
+                                  .then(data => {
+                                    localStorage.setItem(storage_key, JSON.stringify(data.installment_factor));
+                                    insert_billease_text(data.installment_factor);
+                                  });
+                            }
+                          }
+                        }
+                        start();
+                      </script>
+
+                      <script>
+                        document.addEventListener('DOMContentLoaded', function () {
+                          document.querySelectorAll('.installment-accordion__toggle').forEach(function (toggle) {
+                            toggle.addEventListener('click', function () {
+                              const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
+                              const contentId = toggle.getAttribute('aria-controls');
+                              const content = document.getElementById(contentId);
+
+                              toggle.setAttribute('aria-expanded', String(!isExpanded));
+                              toggle.classList.toggle('installment-accordion__toggle--open', !isExpanded);
+
+                              if (content) {
+                                content.hidden = isExpanded; // hide if it was expanded, show if it was collapsed
+                              }
+                            });
+                          });
+                        });
                       </script>
 
                     {%- when 'quantity_selector' -%}
