@@ -94,10 +94,6 @@
     flex-shrink: 0;
   }
 
-  .installment-accordion.is-open .installment-accordion__icon {
-    transform: rotate(180deg);
-  }
-
   .installment-accordion__content {
     border-top: 1px solid #ededed;
   }
@@ -160,6 +156,11 @@
   .installment-option__text a {
     color: #0b6fcf;
     text-decoration: underline;
+  }
+
+  .installment-accordion__toggle--open .installment-accordion__icon svg {
+    transform: rotate(180deg);
+    transition: transform 0.2s ease;
   }
 
   @media screen and (max-width: 749px) {
