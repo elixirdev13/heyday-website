@@ -113,6 +113,16 @@
     -%}
 
     {%- capture product_header -%}
+      {%- if show_breadcrumbs and isModal != true -%}
+        {%- render 'breadcrumbs',
+          show_breadcrumbs: show_breadcrumbs,
+          show_breadcrumbs_collection_link: show_breadcrumbs_collection_link,
+          routes: routes,
+          template: template,
+          collection: collection
+        -%}
+      {%- endif -%}
+
             {%- if vendor_enable or sku_enable -%}
         <div class="product-single__vendor-sku">
           {%- if vendor_enable -%}
