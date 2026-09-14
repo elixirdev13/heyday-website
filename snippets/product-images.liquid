@@ -35,6 +35,19 @@
 -%}
 
 {%- unless product.empty? -%}
+
+  {%- capture product_header -%}
+  {%- if show_breadcrumbs and isModal != true -%}
+        {%- render 'breadcrumbs',
+          show_breadcrumbs: show_breadcrumbs,
+          show_breadcrumbs_collection_link: show_breadcrumbs_collection_link,
+          routes: routes,
+          template: template,
+          collection: collection
+        -%}
+  {%- endif -%}
+  {%- endcapture -%}
+
   <product-images
     data-product-images
     data-zoom="{{ product_zoom_enable }}"
