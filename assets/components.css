@@ -6302,7 +6302,7 @@ html[dir="rtl"] .product-single__meta .rte {
 }
 .product__photos {
   direction: ltr;
-  margin-top: 40px;
+  /* margin-top: 40px; */
 }
 .product__photos a {
     display: block;
