@@ -244,8 +244,10 @@
                         {%- render 'product-description', product: product, id: id, is_tab: block.settings.is_tab -%}
                       </div>
 
-                    {% when 'icons-block' %}
-                      {{ block.settings.icons-block }}
+                    {%- when 'icons_block' -%}
+                    <div class="product-block product-block--icons" {{ block.shopify_attributes }}>
+                      {%- render 'icons-block', block: block -%}
+                    </div>
                     {%- when 'custom_info' -%}
                       {{ block.settings.custom_info }}
                     {%- when 'price' -%}
