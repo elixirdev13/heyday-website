@@ -12,10 +12,23 @@
     "main": {
       "type": "main-product",
       "blocks": {
+        "icons_block_kpQHkC": {
+          "type": "icons_block",
+          "settings": {
+            "icon_1": "wrench",
+            "text_1": "Hassle-free Warranty",
+            "icon_2": "truck",
+            "text_2": "Fast, free shipping",
+            "icon_3": "dollar",
+            "text_3": "30 Day Money Back Guarantee",
+            "icon_4": "headset",
+            "text_4": "Lifetime Customer Support"
+          }
+        },
         "custom_info_KFAwWw": {
           "type": "custom_info",
           "settings": {
-            "custom_info": "{{ product.metafields.custom.product_custom_info | metafield_tag }}<p></p>"
+            "custom_info": "<p>{{ product.metafields.custom.product_custom_info | metafield_tag }}</p><p></p>"
           }
         },
         "variant_picker": {
@@ -84,6 +97,7 @@
         }
       },
       "block_order": [
+        "icons_block_kpQHkC",
         "custom_info_KFAwWw",
         "variant_picker",
         "price",
