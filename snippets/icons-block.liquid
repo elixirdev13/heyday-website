@@ -1,0 +1,80 @@
+{%- comment -%} snippets/icons-block.liquid {%- endcomment -%}
+<div class="icons-block">
+  {%- for i in (1..4) -%}
+    {%- assign icon_key = 'icon_' | append: i -%}
+    {%- assign text_key = 'text_' | append: i -%}
+    {%- assign icon_value = block.settings[icon_key] -%}
+    {%- assign text_value = block.settings[text_key] -%}
+
+    {%- if text_value != blank -%}
+      <div class="icons-block__item">
+        <span class="icons-block__icon">
+          {%- case icon_value -%}
+            {%- when 'wrench' -%}
+              <svg viewBox="0 0 24 24" fill="none" stroke="#02A9DE" stroke-width="1.5"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.3 2.3-2-2 2.3-2.3z"/></svg>
+            {%- when 'truck' -%}
+              <svg viewBox="0 0 24 24" fill="none" stroke="#02A9DE" stroke-width="1.5"><path d="M3 7h11v8H3z"/><path d="M14 10h4l3 3v2h-7z"/><circle cx="7" cy="17.5" r="1.5"/><circle cx="17.5" cy="17.5" r="1.5"/></svg>
+            {%- when 'dollar' -%}
+              <svg viewBox="0 0 24 24" fill="none" stroke="#02A9DE" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M12 7v10M15 9.5c0-1.4-1.3-2.5-3-2.5s-3 1-3 2.3c0 3 6 1.4 6 4.4 0 1.4-1.3 2.3-3 2.3s-3-1.1-3-2.5"/></svg>
+            {%- when 'headset' -%}
+              <svg viewBox="0 0 24 24" fill="none" stroke="#02A9DE" stroke-width="1.5"><path d="M4 13v-1a8 8 0 0 1 16 0v1"/><rect x="3" y="13" width="4" height="6" rx="1"/><rect x="17" y="13" width="4" height="6" rx="1"/><path d="M20 19v1a2 2 0 0 1-2 2h-4"/></svg>
+            {%- when 'shield' -%}
+              <svg viewBox="0 0 24 24" fill="none" stroke="#02A9DE" stroke-width="1.5"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/></svg>
+            {%- when 'box' -%}
+              <svg viewBox="0 0 24 24" fill="none" stroke="#02A9DE" stroke-width="1.5"><path d="M3 8l9-5 9 5-9 5-9-5z"/><path d="M3 8v9l9 5 9-5V8"/><path d="M12 13v9"/></svg>
+          {%- endcase -%}
+        </span>
+        <span class="icons-block__text">{{ text_value }}</span>
+      </div>
+    {%- endif -%}
+  {%- endfor -%}
+</div>
+
+{%- stylesheet -%}
+.icons-block {
+  background-color: #F5F5F5;
+  border: 1px solid #80827E;
+  border-radius: 13px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, auto);
+  gap: 16px 14px;
+  padding: 15px;
+  margin: 10px 0px;
+}
+
+.icons-block__item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.icons-block__icon {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  margin-top: 2px;
+  color: currentColor;
+}
+
+.icons-block__icon svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.icons-block__text {
+  font-size: 12px;
+  line-height: normal;
+  overflow-wrap: break-word;
+}
+
+@media screen and (max-width: 450px) {
+  .icons-block {
+    gap: 12px 14px;
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(4, auto);
+  }
+}
+{%- endstylesheet -%}
