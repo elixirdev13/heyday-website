@@ -382,6 +382,97 @@
         "divider": false
       }
     },
+    "shop_by_goal_icons_Mi6Vgi": {
+      "type": "shop-by-goal-icons",
+      "blocks": {
+        "card_cahPem": {
+          "type": "card",
+          "settings": {
+            "icon_fallback": "scale",
+            "title": "Weight Management",
+            "link": ""
+          }
+        },
+        "card_ygqUtb": {
+          "type": "card",
+          "settings": {
+            "icon_fallback": "bolt",
+            "title": "Energy Boost",
+            "link": ""
+          }
+        },
+        "card_FUd6FX": {
+          "type": "card",
+          "settings": {
+            "icon_fallback": "leaf",
+            "title": "Gut Health",
+            "link": ""
+          }
+        },
+        "card_hmFAfU": {
+          "type": "card",
+          "settings": {
+            "icon_fallback": "shield",
+            "title": "Immunity Support",
+            "link": ""
+          }
+        },
+        "card_C4GQNP": {
+          "type": "card",
+          "settings": {
+            "icon_fallback": "moon",
+            "title": "Better Sleep",
+            "link": ""
+          }
+        },
+        "card_89BHVr": {
+          "type": "card",
+          "settings": {
+            "icon_fallback": "muscle",
+            "title": "Muscle Recovery",
+            "link": ""
+          }
+        },
+        "card_LVp9d3": {
+          "type": "card",
+          "settings": {
+            "icon_fallback": "calm",
+            "title": "Stress Relief",
+            "link": ""
+          }
+        },
+        "card_BjWW4m": {
+          "type": "card",
+          "settings": {
+            "icon_fallback": "heart",
+            "title": "Heart Health",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "card_cahPem",
+        "card_ygqUtb",
+        "card_FUd6FX",
+        "card_hmFAfU",
+        "card_C4GQNP",
+        "card_89BHVr",
+        "card_LVp9d3",
+        "card_BjWW4m"
+      ],
+      "name": "Shop by Goal",
+      "settings": {
+        "eyebrow": "Targeted Wellness",
+        "heading": "Shop by Goal",
+        "subheading": "<p>Explore premium remedies crafted carefully by medical herbalists to bring your bodily systems back into perfect, vibrant harmony.</p>",
+        "columns_desktop": 4,
+        "background_color": "#EFF3EE",
+        "card_background_color": "#FFFFFF",
+        "icon_background_color": "#EFEFEF",
+        "heading_color": "#1F3D2B",
+        "text_color": "#1F3D2B"
+      }
+    },
     "featured_collection_gcficj": {
       "type": "featured-collection",
       "custom_css": [
@@ -920,6 +1011,7 @@
     "custom_product_category_U6TJUa",
     "media_grid_8aArTe",
     "featured-collections",
+    "shop_by_goal_icons_Mi6Vgi",
     "featured_collection_gcficj",
     "featured_collection_BrijJ6",
     "advanced_content_CWAgQh",
