@@ -39,8 +39,19 @@
     padding-bottom: 0;
   }
 
+  /* Base layout shared by both mega menu types. These reset the theme's
+     multi-column rule; the rail variant below overrides display with grid. */
   #shopify-section-{{ section.id }} .megamenu__cols {
+    flex: none;
+    flex-flow: nowrap;
+    columns: 1;
+    display: flex;
+    justify-content: space-between;
     width: 100%;
+  }
+  #shopify-section-{{ section.id }} .megamenu__col {
+    position: relative;
+    padding: 0;
   }
 
   #shopify-section-{{ section.id }} .megamenu__cols--rail {
