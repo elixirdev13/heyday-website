@@ -1,11 +1,12 @@
 {% comment %}
   /**
     * @param {object} main_menu - The main menu object
-    * @param {string} text_direction - text direction
+    * @param {string} [text_direction] - text direction (falls back to settings.text_direction)
   */
 {% endcomment %}
 
 {%- liquid
+  assign text_direction = text_direction | default: settings.text_direction
   if text_direction == 'rtl'
     assign chevron_icon = 'chevron-left'
   else
@@ -19,10 +20,52 @@
       {%- liquid
         assign link_index = forloop.index
         assign child_list_handle = link.title | handleize | append: link_index
+
+        comment
+          Match this nav link to a mega menu block by its "Menu Item" text, same as desktop.
+        endcomment
+        assign link_title_downcase = link.title | strip | downcase
+        assign mega_menu_block = nil
+        for block in section.blocks
+          assign menu_item_downcase = block.settings.menu_item | strip | downcase
+          if menu_item_downcase == link_title_downcase
+            assign mega_menu_block = block
+            break
+          endif
+        endfor
+
+        assign is_mega_cats = false
+        assign is_mega_grid = false
+        assign sub_links = link.links
+        if mega_menu_block.type == 'megamenulink'
+          assign is_mega_cats = true
+          assign sub_links = mega_menu_block.settings.megamenu_main_menu_link_list.links
+        elsif mega_menu_block.type == 'megamenulink2'
+          assign is_mega_grid = true
+        endif
+
+        assign has_submenu = false
+        if link.levels > 0 or mega_menu_block
+          assign has_submenu = true
+        endif
+
+        if is_mega_cats
+          assign categories_label = mega_menu_block.settings.categories_label
+          assign badge_text = mega_menu_block.settings.badge_text
+          assign button_label = mega_menu_block.settings.button_label | default: 'Shop All Best Sellers'
+          assign shop_all_label = mega_menu_block.settings.shop_all_label | default: 'Shop All'
+
+          if mega_menu_block.settings.default_image
+            assign default_promo_src = mega_menu_block.settings.default_image | image_url: width: 800
+          else
+            assign default_promo_src = 'https://cdn.shopify.com/s/files/1/0673/0045/8748/files/Best_Sellers.jpg?v=1723790108'
+          endif
+          assign default_promo_href = mega_menu_block.settings.default_button_url | default: '#'
+        endif
       -%}
 
       <li class="slide-nav__item">
-        {%- if link.levels > 0 -%}
+        {%- if has_submenu -%}
           <button
             type="button"
             class="slide-nav__button js-toggle-submenu"
@@ -32,7 +75,7 @@
             {% endif %}
           >
             <span class="slide-nav__link">
-              <span>{{ link.title }}</span>
+              <span>{{ link.title | escape }}</span>
               {% render 'icon', name: chevron_icon %}
               <span class="icon__fallback-text visually-hidden">{{ 'actions.expand_submenu' | t }}</span>
             </span>
@@ -50,86 +93,167 @@
               >
                 <span class="slide-nav__link slide-nav__link--back">
                   {% render 'icon', name: chevron_icon %}
-                  <span>{{ link.title }}</span>
+                  <span>{{ link.title | escape }}</span>
                 </span>
               </button>
             </li>
 
-            {%- if link.type == 'collection_link' -%}
-              <li class="slide-nav__item">
-                <a href="{{ link.url }}" class="slide-nav__link">
-                  <span>{{ 'actions.view_all' | t }}</span>
-                  {% render 'icon', name: chevron_icon %}
-                </a>
-              </li>
-            {%- endif -%}
-
-            {%- for childlink in link.links -%}
-              {%- liquid
-                assign grand_child_list_handle = childlink.title | handleize
-                assign grand_child_link_id = grand_child_list_handle | append: link_index
-              -%}
-
-              <li class="slide-nav__item">
-                {%- if childlink.levels > 0 -%}
-                  <button
-                    type="button"
-                    class="slide-nav__button js-toggle-submenu"
-                    data-target="tier-3-{{ grand_child_link_id }}"
-                    {% if link.active or link.child_active %}
-                      data-active="true"
-                    {% endif %}
-                  >
-                    <span class="slide-nav__link slide-nav__sublist-link">
-                      <span>{{ childlink.title }}</span>
-                      {% render 'icon', name: chevron_icon %}
-                      <span class="icon__fallback-text visually-hidden">{{ 'actions.expand_submenu' | t }}</span>
-                    </span>
-                  </button>
-                  <ul
-                    class="slide-nav__dropdown"
-                    data-parent="tier-3-{{ grand_child_link_id }}"
-                    data-level="3"
-                  >
-                    <li class="slide-nav__item">
-                      <button
-                        type="button"
-                        class="slide-nav__button js-toggle-submenu"
-                        data-target="tier-2-{{ child_list_handle }}"
-                      >
-                        <span class="slide-nav__link slide-nav__link--back">
-                          {% render 'icon', name: chevron_icon %}
-                          <span>{{ childlink.title }}</span>
-                        </span>
-                      </button>
-                    </li>
-
-                    {%- if childlink.type == 'collection_link' -%}
-                      <li class="slide-nav__item">
-                        <a href="{{ childlink.url }}" class="slide-nav__link">
-                          <span>{{ 'actions.view_all' | t }}</span>
-                          {% render 'icon', name: chevron_icon %}
-                        </a>
-                      </li>
+            {%- if is_mega_grid -%}
+              <li class="slide-nav__item slide-nav__item--grid">
+                <div class="slide-nav__grid">
+                  {%- for i in (1..8) -%}
+                    {%- liquid
+                      assign url_key = 'button_url_' | append: i
+                      assign image_key = 'image_' | append: i
+                      assign title_key = 'title_' | append: i
+                      assign tile_image = mega_menu_block.settings[image_key]
+                      assign tile_title = mega_menu_block.settings[title_key]
+                    -%}
+                    {%- if tile_image or tile_title != blank -%}
+                      <a href="{{ mega_menu_block.settings[url_key] }}" class="slide-nav__grid-item">
+                        {%- if tile_image -%}
+                          <img
+                            src="{{ tile_image | image_url: width: 400 }}"
+                            alt=""
+                            loading="lazy"
+                          >
+                        {%- endif -%}
+                        <span class="slide-nav__grid-title">{{ tile_title | escape }}</span>
+                      </a>
                     {%- endif -%}
-
-                    {%- for grandchildlink in childlink.links -%}
-                      <li class="slide-nav__item">
-                        <a href="{{ grandchildlink.url }}" class="slide-nav__link">
-                          <span>{{ grandchildlink.title | escape }}</span>
-                          {% render 'icon', name: chevron_icon %}
-                        </a>
-                      </li>
-                    {%- endfor -%}
-                  </ul>
-                {%- else -%}
-                  <a href="{{ childlink.url }}" class="slide-nav__link">
-                    <span>{{ childlink.title | escape }}</span>
+                  {%- endfor -%}
+                </div>
+              </li>
+            {%- else -%}
+              {%- if link.type == 'collection_link' -%}
+                <li class="slide-nav__item">
+                  <a href="{{ link.url }}" class="slide-nav__link">
+                    <span>{{ 'actions.view_all' | t }}</span>
                     {% render 'icon', name: chevron_icon %}
                   </a>
-                {%- endif -%}
-              </li>
-            {%- endfor -%}
+                </li>
+              {%- endif -%}
+
+              {%- if is_mega_cats and categories_label != blank -%}
+                <li class="slide-nav__item slide-nav__label">{{ categories_label | escape }}</li>
+              {%- endif -%}
+
+              {%- for childlink in sub_links -%}
+                {%- liquid
+                  assign grand_child_list_handle = childlink.title | handleize
+                  assign grand_child_link_id = grand_child_list_handle | append: link_index
+
+                  assign promo_src = ''
+                  assign promo_href = ''
+                  if is_mega_cats
+                    assign image_key = 'image_' | append: forloop.index
+                    assign url_key = 'button_url_' | append: forloop.index
+                    assign cat_image = mega_menu_block.settings[image_key]
+                    assign cat_button = mega_menu_block.settings[url_key]
+
+                    assign promo_src = default_promo_src
+                    if cat_image
+                      assign promo_src = cat_image | image_url: width: 800
+                    endif
+                    assign promo_href = default_promo_href
+                    if cat_button != blank
+                      assign promo_href = cat_button
+                    endif
+                  endif
+                -%}
+
+                <li class="slide-nav__item">
+                  {%- if childlink.levels > 0 -%}
+                    <button
+                      type="button"
+                      class="slide-nav__button js-toggle-submenu"
+                      data-target="tier-3-{{ grand_child_link_id }}"
+                      {% if childlink.active or childlink.child_active %}
+                        data-active="true"
+                      {% endif %}
+                    >
+                      <span class="slide-nav__link slide-nav__sublist-link">
+                        <span>{{ childlink.title | escape }}</span>
+                        {% render 'icon', name: chevron_icon %}
+                        <span class="icon__fallback-text visually-hidden">{{ 'actions.expand_submenu' | t }}</span>
+                      </span>
+                    </button>
+                    <ul
+                      class="slide-nav__dropdown"
+                      data-parent="tier-3-{{ grand_child_link_id }}"
+                      data-level="3"
+                    >
+                      <li class="slide-nav__item">
+                        <button
+                          type="button"
+                          class="slide-nav__button js-toggle-submenu"
+                          data-target="tier-2-{{ child_list_handle }}"
+                        >
+                          <span class="slide-nav__link slide-nav__link--back">
+                            {% render 'icon', name: chevron_icon %}
+                            <span>{{ childlink.title | escape }}</span>
+                          </span>
+                        </button>
+                      </li>
+
+                      {%- if childlink.type == 'collection_link' -%}
+                        <li class="slide-nav__item">
+                          <a href="{{ childlink.url }}" class="slide-nav__link">
+                            <span>
+                              {%- if is_mega_cats -%}
+                                {{- shop_all_label | escape -}}
+                              {%- else -%}
+                                {{- 'actions.view_all' | t -}}
+                              {%- endif -%}
+                            </span>
+                            {% render 'icon', name: chevron_icon %}
+                          </a>
+                        </li>
+                      {%- endif -%}
+
+                      {%- for grandchildlink in childlink.links -%}
+                        <li class="slide-nav__item">
+                          {%- if is_mega_cats -%}
+                            <a href="{{ grandchildlink.url }}" class="slide-nav__link slide-nav__link--dot">
+                              <span>{{ grandchildlink.title | escape }}</span>
+                            </a>
+                          {%- else -%}
+                            <a href="{{ grandchildlink.url }}" class="slide-nav__link">
+                              <span>{{ grandchildlink.title | escape }}</span>
+                              {% render 'icon', name: chevron_icon %}
+                            </a>
+                          {%- endif -%}
+                        </li>
+                      {%- endfor -%}
+
+                      {%- if is_mega_cats -%}
+                        <li class="slide-nav__item slide-nav__item--promo">
+                          <div class="slide-nav__promo">
+                            <img
+                              src="{{ promo_src }}"
+                              alt=""
+                              class="slide-nav__promo-image"
+                              loading="lazy"
+                            >
+                            {%- if badge_text != blank -%}
+                              <span class="slide-nav__badge">{{ badge_text | escape }}</span>
+                            {%- endif -%}
+                            <a href="{{ promo_href }}" class="slide-nav__promo-button">
+                              {{- button_label | escape -}}
+                            </a>
+                          </div>
+                        </li>
+                      {%- endif -%}
+                    </ul>
+                  {%- else -%}
+                    <a href="{{ childlink.url }}" class="slide-nav__link">
+                      <span>{{ childlink.title | escape }}</span>
+                      {% render 'icon', name: chevron_icon %}
+                    </a>
+                  {%- endif -%}
+                </li>
+              {%- endfor -%}
+            {%- endif -%}
           </ul>
         {%- else -%}
           <a href="{{ link.url }}" class="slide-nav__link">
