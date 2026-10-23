@@ -11341,7 +11341,7 @@ form + .footer__social {
     transition: opacity 0.3s ease 0.15s, transform 0.25s cubic-bezier(0.165, 0.84, 0.44, 1) 0.15s;
   }
 .megamenu {
-  padding: 20px 0 0;
+  padding: 0;
   line-height: 1.8;
 }
 .site-nav--is-megamenu.site-nav__item {
