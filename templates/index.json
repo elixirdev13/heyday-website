@@ -397,7 +397,7 @@
           "type": "card",
           "settings": {
             "icon_fallback": "bolt",
-            "title": "Energy Boost",
+            "title": "Energy & Vitality",
             "link": ""
           }
         },
@@ -405,7 +405,7 @@
           "type": "card",
           "settings": {
             "icon_fallback": "leaf",
-            "title": "Gut Health",
+            "title": "Gut & Digestive Health",
             "link": ""
           }
         },
@@ -466,11 +466,11 @@
         "heading": "Shop by Goal",
         "subheading": "<p>Explore premium remedies crafted carefully by medical herbalists to bring your bodily systems back into perfect, vibrant harmony.</p>",
         "columns_desktop": 4,
-        "background_color": "#EFF3EE",
-        "card_background_color": "#FFFFFF",
-        "icon_background_color": "#EFEFEF",
-        "heading_color": "#1F3D2B",
-        "text_color": "#1F3D2B"
+        "background_color": "#eff3ee",
+        "card_background_color": "#ffffff",
+        "icon_background_color": "#efefef",
+        "heading_color": "#1f3d2b",
+        "text_color": "#1f3d2b"
       }
     },
     "featured_collection_gcficj": {
