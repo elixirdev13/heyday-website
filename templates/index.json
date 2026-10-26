@@ -388,6 +388,7 @@
         "card_cahPem": {
           "type": "card",
           "settings": {
+            "icon": "shopify://shop_images/scale.svg",
             "icon_fallback": "scale",
             "title": "Weight Management",
             "link": ""
@@ -396,6 +397,7 @@
         "card_ygqUtb": {
           "type": "card",
           "settings": {
+            "icon": "shopify://shop_images/zap.svg",
             "icon_fallback": "bolt",
             "title": "Energy & Vitality",
             "link": ""
@@ -404,6 +406,7 @@
         "card_FUd6FX": {
           "type": "card",
           "settings": {
+            "icon": "shopify://shop_images/leaf.svg",
             "icon_fallback": "leaf",
             "title": "Gut & Digestive Health",
             "link": ""
@@ -412,6 +415,7 @@
         "card_hmFAfU": {
           "type": "card",
           "settings": {
+            "icon": "shopify://shop_images/shield-check.svg",
             "icon_fallback": "shield",
             "title": "Immune Support",
             "link": ""
@@ -420,6 +424,7 @@
         "card_C4GQNP": {
           "type": "card",
           "settings": {
+            "icon": "shopify://shop_images/moon-star.svg",
             "icon_fallback": "moon",
             "title": "Sleep & Stress",
             "link": ""
@@ -428,6 +433,7 @@
         "card_89BHVr": {
           "type": "card",
           "settings": {
+            "icon": "shopify://shop_images/dumbbell.svg",
             "icon_fallback": "muscle",
             "title": "Sports Nutrition",
             "link": ""
