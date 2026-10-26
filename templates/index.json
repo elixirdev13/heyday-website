@@ -421,7 +421,7 @@
           "type": "card",
           "settings": {
             "icon_fallback": "moon",
-            "title": "Better Sleep",
+            "title": "Sleep & Stress",
             "link": ""
           }
         },
@@ -429,7 +429,7 @@
           "type": "card",
           "settings": {
             "icon_fallback": "muscle",
-            "title": "Muscle Recovery",
+            "title": "Sports Nutrition",
             "link": ""
           }
         },
