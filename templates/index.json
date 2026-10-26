@@ -436,7 +436,7 @@
         "card_LVp9d3": {
           "type": "card",
           "settings": {
-            "icon": "shopify://shop_images/beauty_and_anti_aging.svg",
+            "icon": "shopify://shop_images/beauty_and_anti_aging_22x22_44474452-4158-4157-a9e8-be26ebb8e2e9.svg",
             "icon_fallback": "calm",
             "title": "Beauty & Anti-Aging",
             "link": ""
@@ -445,7 +445,7 @@
         "card_BjWW4m": {
           "type": "card",
           "settings": {
-            "icon": "shopify://shop_images/daily_essentials.svg",
+            "icon": "shopify://shop_images/daily_essentials_22x22_facd5c13-a8b3-47f6-a075-c9e1f7a2bc0d.svg",
             "icon_fallback": "heart",
             "title": "Daily Essentials & Multivitamins",
             "link": ""
