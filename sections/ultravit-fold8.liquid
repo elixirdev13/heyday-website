@@ -1,7 +1,4 @@
 <style>
-  html{
-    scroll-behavior: smooth;
-  }
   /* Outer container with the background image */
   #shopify-section-{{ section.id }} .cta-section-container {
     padding: 60px 20px;
@@ -11,7 +8,6 @@
     background-position: center;
     background-repeat: no-repeat;
     background-color: {{ section.settings.bg_fallback_color }};
-
   }
 
   /* The white, shaped banner */
@@ -85,6 +81,55 @@
     {% endif %}
   </div>
 </div>
+
+<script>
+  (function () {
+    var root = document.getElementById('shopify-section-{{ section.id }}');
+    if (!root) return;
+
+    root.addEventListener('click', function (e) {
+      var link = e.target.closest('a');
+      if (!link || !root.contains(link)) return;
+
+      var href = link.getAttribute('href') || '';
+      var hash = '';
+
+      if (href.charAt(0) === '#') {
+        // Plain in-page anchor: "#" or "#specs"
+        hash = href;
+      } else {
+        // Full or relative URL that points to this same page with a hash
+        try {
+          var url = new URL(href, window.location.href);
+          if (
+            url.origin === window.location.origin &&
+            url.pathname === window.location.pathname &&
+            url.hash
+          ) {
+            hash = url.hash;
+          } else {
+            return; // different page: let it navigate normally
+          }
+        } catch (err) {
+          return;
+        }
+      }
+
+      e.preventDefault();
+
+      if (hash.length <= 1) return; // bare "#": do nothing
+
+      var target = null;
+      try {
+        target = document.querySelector(hash);
+      } catch (err) {}
+
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  })();
+</script>
 
 {% schema %}
 {
