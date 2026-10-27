@@ -190,6 +190,7 @@
         "product_card_tPzAFj",
         "product_card_ymrDWF"
       ],
+      "disabled": true,
       "name": "Bestsellers Dynamic",
       "settings": {
         "heading": "Our Bestsellers",
