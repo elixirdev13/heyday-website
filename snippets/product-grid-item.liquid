@@ -170,64 +170,15 @@
     <div class="grid-item__content">
       {%- unless no_actions -%}
         {%- if quick_add_enable or quick_shop_enable -%}
+          {% comment %} View-only catalog: add to cart / quick view replaced with a View Product link {% endcomment %}
           <div class="grid-product__actions {% if on_sale %} grid-product__actions2 {% endif %}">
-            {%- if quick_add_enable and product.available -%}
-              {% comment %}
-                Quick add feature:
-                  - when a single variant option, product is immediately added
-                  - when multiple variants, popup with product form appears
-              {% endcomment %}
-              {%- if product.variants.size > 1 -%}
-                {%- capture quickAddButton %}
-                  <button type="button" class="text-link quick-add-btn js-quick-add-form js-modal-open-quick-add" title="{{ 'actions.add_to_cart' | t }}">
-                    <span class="custom_action_button">
-                      Add To Cart
-                      {% comment %}{% render 'icon', name: 'plus' %} {% endcomment %}
-                      <span class="icon__fallback-text visually-hidden">{{ 'actions.add_to_cart' | t }}</span>
-                    </span>
-                  </button>
-                {%- endcapture -%}
-                {%- capture content -%}
-                  {% render 'tool-tip-trigger',
-                    button: quickAddButton,
-                    context: 'QuickAdd',
-                    tool-tip-classes: 'quick-add-modal',
-                  %}
-                {%- endcapture -%}
-                {% render 'quick-add', content: content %}
-              {%- else -%}
-                {%- capture content -%}
-                  <button
-                    type="button" class="text-link quick-add-btn"
-                    title="{{ 'actions.add_to_cart' | t }}"
-                    data-id="{{ product.selected_or_first_available_variant.id }}"
-                    data-single-variant-quick-add
-                  >
-                    <span class="custom_action_button">
-                      Add To Cart
-                      {% comment %}{% render 'icon', name: 'plus' %} {% endcomment %}
-                      <span class="icon__fallback-text visually-hidden">{{ 'actions.add_to_cart' | t }}</span>
-                    </span>
-                  </button>
-                {%- endcapture -%}
-                {% render 'quick-add', content: content %}
-              {%- endif -%}
-            {%- endif -%}
-            {%- if quick_shop_enable and type != 'horizontal' -%}
-              {%- capture quickShopButton -%}
-                <button type="button" class="custom_action_button2 quick-product__btn js-modal-open-quick-modal-{{ product.id }} small--hide" title="{{ 'labels.quick_shop' | t }}" data-handle="{{ product.handle }}">
-                  Quick View
-                  {% comment %}{% render 'icon', name: 'search' %} {% endcomment %}
-                  <span class="icon__fallback-text visually-hidden">{{ 'labels.quick_shop' | t }}</span>
-                </button>
-              {%- endcapture -%}
-              {%- capture content -%}
-                {%- liquid
-                  render 'tool-tip-trigger', button: quickShopButton, context: 'QuickShop', tool-tip-classes: 'quick-shop-modal'
-                -%}
-              {%- endcapture -%}
-              {%- render 'quick-shop', content: content -%}
-            {%- endif -%}
+            <a
+              href="{{ product.url | within: collection }}"
+              class="custom_action_button2 quick-product__btn small--hide"
+              title="View Product"
+            >
+              View Product
+            </a>
           </div>
         {%- endif -%}
       {%- endunless -%}

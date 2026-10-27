@@ -140,28 +140,11 @@
             </div>
           {% endif %}
 
+          {% comment %} View-only catalog: checkout disabled. {% endcomment %}
           <div class="cart__item-row cart__checkout-wrapper">
-            <button type="submit" name="checkout" data-terms-required="{{ cart_terms_conditions_enable }}" class="btn cart__checkout">
-              {{ 'actions.checkout' | t }}
-            </button>
-
-            {% if additional_checkout_buttons and cart_additional_buttons %}
-              <div class="additional-checkout-buttons">{{ content_for_additional_checkout_buttons }}</div>
-            {% endif %}
-
             <a href="{{ routes.all_products_collection_url }}" class="btn btn--secondary cart__continue">
               {{ 'actions.continue_shopping' | t }}
             </a>
-          </div>
-
-          <div class="cart__item-row text-center">
-            <small>
-              {%- if cart.taxes_included -%}
-                {{ 'info.shipping_at_checkout_taxes_included' | t }}
-              {%- else -%}
-                {{ 'info.shipping_at_checkout' | t }}
-              {%- endif -%}
-            </small>
           </div>
         </div>
       </div>
