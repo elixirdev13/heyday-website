@@ -76,8 +76,8 @@
             "link_text_2": "",
             "color_accent": "#ffffff",
             "text_align": "vertical-bottom horizontal-left",
-            "image": "shopify://shop_images/heyday_wide_1200x675_f1f72c5c-d5bc-41e4-8d45-084ebadbfb3c.jpg",
-            "image_mobile": "shopify://shop_images/DSCF8187_96af8cae-53aa-4606-98db-68a068f859e9.jpg",
+            "image": "shopify://shop_images/Heyday_Everyday_Wellness_Banner.png",
+            "image_mobile": "shopify://shop_images/Everyday_Wellness_Brighter_You.png",
             "overlay_opacity": 0
           }
         },
@@ -392,7 +392,7 @@
             "icon": "shopify://shop_images/scale.svg",
             "icon_fallback": "scale",
             "title": "Weight Management",
-            "link": "shopify://collections/weight-management"
+            "link": ""
           }
         },
         "card_ygqUtb": {
@@ -401,7 +401,7 @@
             "icon": "shopify://shop_images/zap.svg",
             "icon_fallback": "bolt",
             "title": "Energy & Vitality",
-            "link": "shopify://collections/energy-vitality"
+            "link": ""
           }
         },
         "card_FUd6FX": {
@@ -410,7 +410,7 @@
             "icon": "shopify://shop_images/leaf.svg",
             "icon_fallback": "leaf",
             "title": "Gut & Digestive Health",
-            "link": "shopify://collections/gut-digestive"
+            "link": ""
           }
         },
         "card_hmFAfU": {
@@ -419,7 +419,7 @@
             "icon": "shopify://shop_images/shield-check.svg",
             "icon_fallback": "shield",
             "title": "Immune Support",
-            "link": "shopify://collections/immune-support"
+            "link": ""
           }
         },
         "card_C4GQNP": {
@@ -428,7 +428,7 @@
             "icon": "shopify://shop_images/moon-star.svg",
             "icon_fallback": "moon",
             "title": "Sleep & Stress",
-            "link": "shopify://collections/sleep-stress"
+            "link": ""
           }
         },
         "card_89BHVr": {
@@ -437,7 +437,7 @@
             "icon": "shopify://shop_images/dumbbell.svg",
             "icon_fallback": "muscle",
             "title": "Sports Nutrition",
-            "link": "shopify://collections/sports-nutrition"
+            "link": ""
           }
         },
         "card_LVp9d3": {
@@ -446,7 +446,7 @@
             "icon": "shopify://shop_images/beauty_and_anti_aging_22x22_44474452-4158-4157-a9e8-be26ebb8e2e9.svg",
             "icon_fallback": "calm",
             "title": "Beauty & Anti-Aging",
-            "link": "shopify://collections/collections-beauty-anti-aging"
+            "link": ""
           }
         },
         "card_BjWW4m": {
@@ -455,7 +455,7 @@
             "icon": "shopify://shop_images/daily_essentials_22x22_facd5c13-a8b3-47f6-a075-c9e1f7a2bc0d.svg",
             "icon_fallback": "heart",
             "title": "Daily Essentials & Multivitamins",
-            "link": "shopify://collections/daily-essentials"
+            "link": ""
           }
         }
       },
