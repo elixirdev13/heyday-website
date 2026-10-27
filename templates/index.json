@@ -76,8 +76,8 @@
             "link_text_2": "",
             "color_accent": "#ffffff",
             "text_align": "vertical-bottom horizontal-left",
-            "image": "shopify://shop_images/Heyday_Everyday_Wellness_Banner.png",
-            "image_mobile": "shopify://shop_images/Everyday_Wellness_Brighter_You.png",
+            "image": "shopify://shop_images/Everyday_Wellness_Product_Banner.png",
+            "image_mobile": "shopify://shop_images/Everyday_Wellness_Supplement_Collection_1.png",
             "overlay_opacity": 0
           }
         },
@@ -494,7 +494,7 @@
       "settings": {
         "title": "Our Best Sellers",
         "sub_title": "",
-        "fc_custom_button_label": "Learn More",
+        "fc_custom_button_label": "SHOP ALL",
         "fc_custom_button_link": "shopify://collections/best-seller",
         "heading_size": "h1",
         "heading_position": "center",
@@ -519,7 +519,7 @@
       "settings": {
         "title": "Our Bestsellers",
         "sub_title": "",
-        "fc_custom_button_label": "Learn More",
+        "fc_custom_button_label": "SHOP ALL",
         "fc_custom_button_link": "shopify://collections/best-products",
         "heading_size": "h1",
         "heading_position": "center",
@@ -563,7 +563,7 @@
         "heading": "Heyday Essentials",
         "text": "From essential vitamins to targeted supplements, our in-house line is meticulously formulated to support your well-being journey.",
         "button_link": "shopify://collections/heyday-essentials",
-        "button_text": "Learn More"
+        "button_text": "SHOP NOW"
       }
     },
     "featured_collection_gfz8jA": {
@@ -577,7 +577,7 @@
       "settings": {
         "title": "Our Products",
         "sub_title": "",
-        "fc_custom_button_label": "Learn More",
+        "fc_custom_button_label": "SHOP ALL",
         "fc_custom_button_link": "shopify://collections",
         "heading_size": "h1",
         "heading_position": "center",
@@ -601,7 +601,7 @@
             "title_size": 70,
             "subheading": "A Small Batch Refillery that is Specially Curated for Healthy Living",
             "link": "shopify://collections/heyday-refillery",
-            "link_text": "Learn More",
+            "link_text": "SHOP NOW",
             "link_2": "",
             "link_text_2": "",
             "color_accent": "#164734",
@@ -995,7 +995,7 @@
         "liquid_LLx4fr": {
           "type": "liquid",
           "settings": {
-            "code": "<div class=\"last-section-container\">\n<div class=\"last-section-container-inner\">\n\n<div class=\"last-section-content-left\">\n<h4>Your wellness journey starts here</h4><p>Start living the life you deserve with Heyday\n </p>\n</div>\n<div class=\"last-section-content-right\">\n<a href=\"/collections/all-products\" class=\"section-3-button\">Learn More </a>\n</div>\n\n</div>\n\n</div>",
+            "code": "<div class=\"last-section-container\">\n<div class=\"last-section-container-inner\">\n\n<div class=\"last-section-content-left\">\n<h4>Your wellness journey starts here</h4><p>Start living the life you deserve with Heyday\n </p>\n</div>\n<div class=\"last-section-content-right\">\n<a href=\"/collections/all-products\" class=\"section-3-button\">Shop Now </a>\n</div>\n\n</div>\n\n</div>",
             "width": "100%",
             "alignment": "center"
           }
