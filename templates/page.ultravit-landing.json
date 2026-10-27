@@ -203,14 +203,16 @@
         "category_card_YAjtGA": {
           "type": "category_card",
           "settings": {
+            "image": "shopify://shop_images/Frame_284.png",
             "title": "Energy & Immunity",
             "subtitle": "Vitamin C, Multivitamins",
-            "link": "https://heyday.ph/collections/energy-and-immunity"
+            "link": "shopify://collections/energy-vitality"
           }
         },
         "category_card_DyRQ9F": {
           "type": "category_card",
           "settings": {
+            "image": "shopify://shop_images/Frame_286.png",
             "title": "Bone & Joint Health",
             "subtitle": "Calcium, Vitamin D3",
             "link": "https://heyday.ph/collections/bone-and-joint-health"
@@ -219,6 +221,7 @@
         "category_card_LzD7Bh": {
           "type": "category_card",
           "settings": {
+            "image": "shopify://shop_images/Beauty_and_Wellness.png",
             "title": "Beauty & Wellness",
             "subtitle": "Biotin, Collagen Boosters",
             "link": "https://heyday.ph/collections/beauty-and-wellness"
@@ -227,6 +230,7 @@
         "category_card_xYY4L3": {
           "type": "category_card",
           "settings": {
+            "image": "shopify://shop_images/Daily_Essentials.jpg",
             "title": "Daily Essentials",
             "subtitle": "Multivitamin Gummies",
             "link": "https://heyday.ph/collections/daily-essentials"
@@ -254,7 +258,8 @@
         "text_box_bg_color": "#ff7933",
         "text_color": "#ffffff",
         "heading": "The Ultravit Difference",
-        "content": "<p>Ultravit is where innovation meets performance. Developed with precision and care, our advanced formula is designed to support your body’s daily needs while helping you perform at your best. Every ingredient is carefully selected to deliver balance, strength, and lasting vitality.<br/><br/>Engineered for modern lifestyles, Ultravit helps fuel your energy, sharpen your focus, and support overall well-being. With consistent quality you can trust, Ultravit empowers you to feel stronger, healthier, and ready for whatever the day brings</p>"
+        "content": "<p>Ultravit is where innovation meets performance. Developed with precision and care, our advanced formula is designed to support your body’s daily needs while helping you perform at your best. Every ingredient is carefully selected to deliver balance, strength, and lasting vitality.<br/><br/>Engineered for modern lifestyles, Ultravit helps fuel your energy, sharpen your focus, and support overall well-being. With consistent quality you can trust, Ultravit empowers you to feel stronger, healthier, and ready for whatever the day brings</p>",
+        "image": "shopify://shop_images/img3_1.png"
       }
     },
     "ultravit_fold7_UanG9c": {
@@ -301,6 +306,7 @@
         "heading": "Boost Your Day The Ultravit Way",
         "button_text": "Shop Ultravit Now",
         "button_link": "#best-seller",
+        "background_image": "shopify://shop_images/Call-to-Action.png",
         "bg_fallback_color": "#fff5e6",
         "heading_color": "#222222",
         "button_color": "#f27d42",
