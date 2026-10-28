@@ -1,1 +1,78 @@
-{"sections":{"main":{"type":"list-collections-template","settings":{}},"logo-list":{"type":"logo-list","blocks":{"logo1":{"type":"logo_image","settings":{}},"logo2":{"type":"logo_image","settings":{}},"logo3":{"type":"logo_image","settings":{}},"logo4":{"type":"logo_image","settings":{}},"logo5":{"type":"logo_image","settings":{}},"logo6":{"type":"logo_image","settings":{}}},"block_order":["logo1","logo2","logo3","logo4","logo5","logo6"],"settings":{"title":"Our brands"}}},"order":["main","logo-list"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "list-collections-template",
+      "settings": {
+        "title_enable": true,
+        "display_type": "all",
+        "sort": "alphabetical"
+      }
+    },
+    "logo-list": {
+      "type": "logo-list",
+      "blocks": {
+        "logo1": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify://shop_images/store-locator-mobile.jpg",
+            "link": ""
+          }
+        },
+        "logo2": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify://shop_images/Vplab.jpg",
+            "link": ""
+          }
+        },
+        "logo3": {
+          "type": "logo_image",
+          "disabled": true,
+          "settings": {
+            "link": ""
+          }
+        },
+        "logo4": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify://shop_images/Nat_Form.jpg",
+            "link": ""
+          }
+        },
+        "logo5": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify://shop_images/Ultra_Vit.jpg",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "logo1",
+        "logo2",
+        "logo3",
+        "logo4",
+        "logo5"
+      ],
+      "settings": {
+        "title": "Our brands",
+        "heading_size": "h2",
+        "heading_position": "center",
+        "divider": false
+      }
+    }
+  },
+  "order": [
+    "main",
+    "logo-list"
+  ]
+}
