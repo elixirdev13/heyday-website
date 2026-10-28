@@ -538,7 +538,7 @@
             "inner_border_radius_bottom": 0,
             "inner_border_radius_left": 80,
             "button_primary_text": "Shop VPLab at Heyday",
-            "button_primary_url": "#shopify-section-template--27599080816954__ultravit_fold4_cBHx7y",
+            "button_primary_url": "shopify://collections/vplab",
             "button_primary_bg": "#266cb4",
             "button_primary_text_color": "#ffffff",
             "button_primary_hover_bg": "#266cb4",
