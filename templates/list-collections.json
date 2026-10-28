@@ -63,6 +63,9 @@
         "logo4",
         "logo5"
       ],
+      "custom_css": [
+        ".new-grid{justify-content: center;}"
+      ],
       "settings": {
         "title": "Our brands",
         "heading_size": "h2",
