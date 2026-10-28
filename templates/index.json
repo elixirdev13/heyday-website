@@ -392,7 +392,7 @@
             "icon": "shopify://shop_images/scale.svg",
             "icon_fallback": "scale",
             "title": "Weight Management",
-            "link": ""
+            "link": "https://heyday.ph/collections/weight-management"
           }
         },
         "card_ygqUtb": {
@@ -582,7 +582,7 @@
         "heading_size": "h1",
         "heading_position": "center",
         "home_featured_products": "anti-aging-cellular",
-        "count": 5,
+        "count": 10,
         "products_per_row": 5,
         "mobile_scrollable": false,
         "view_all": false,
