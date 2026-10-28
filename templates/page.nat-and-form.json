@@ -670,7 +670,7 @@
             "inner_border_radius_bottom": 0,
             "inner_border_radius_left": 80,
             "button_primary_text": "Shop Nat&Form on Heyday",
-            "button_primary_url": "shopify://collections/nat-and-form",
+            "button_primary_url": "shopify://collections/nat-form",
             "button_primary_bg": "#64816f",
             "button_primary_text_color": "#ffffff",
             "button_primary_hover_bg": "#266cb4",
