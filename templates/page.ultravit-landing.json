@@ -306,7 +306,7 @@
       "settings": {
         "heading": "Boost Your Day The Ultravit Way",
         "button_text": "Shop Ultravit Now",
-        "button_link": "#best-seller",
+        "button_link": "shopify://collections/ultravit",
         "background_image": "shopify://shop_images/Call-to-Action.png",
         "bg_fallback_color": "#fff5e6",
         "heading_color": "#222222",
