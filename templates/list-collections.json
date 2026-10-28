@@ -64,7 +64,8 @@
         "logo5"
       ],
       "custom_css": [
-        ".new-grid {justify-content: center;}"
+        ".new-grid {justify-content: center;}",
+        ".logo-bar__item{padding: 0px;}"
       ],
       "settings": {
         "title": "",
