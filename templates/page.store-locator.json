@@ -110,7 +110,15 @@
           "settings": {
             "icon": "chat",
             "title": "Park Triangle Mall",
-            "text": "<p>Park Triangle Mall &nbsp;<br/>32nd Street Cor. 11th Avenue, BGC, Taguig</p><p><strong>Operating Hours</strong><br/>8:00am -10:00pm Weekdays<br/>8:00am -10:00pm Weekends</p><p><strong>Contact Information</strong><br/>09661488513</p>"
+            "text": "<p>32nd Street Cor. 11th Avenue, BGC, Taguig</p><p><strong>Operating Hours</strong><br/>8:00am -10:00pm Weekdays<br/>8:00am -10:00pm Weekends</p><p><strong>Contact Information</strong><br/>09661488513</p>"
+          }
+        },
+        "text_block_7wDFjG": {
+          "type": "text_block",
+          "settings": {
+            "icon": "chat",
+            "title": "Festival Mall",
+            "text": "<p>UGF Expansion Wing, Festival Mall,<br/>Alabang</p><p><strong>Operating Hours</strong><br/>11:00am -9:00pm Weekdays<br/>10:00am -9:00pm Weekends</p><p><strong>Contact Information</strong><br/>09681660512</p>"
           }
         }
       },
@@ -118,7 +126,8 @@
         "text_block_VJGMCq",
         "text_block_HfiVLg",
         "text_block_fFVyQx",
-        "text_block_Ezath8"
+        "text_block_Ezath8",
+        "text_block_7wDFjG"
       ],
       "custom_css": [
         ".text-with-icons__block-icon {display: none;}",
