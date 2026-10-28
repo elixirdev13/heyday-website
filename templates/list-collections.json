@@ -48,27 +48,6 @@
             "link": "https://heyday.ph/pages/nat-and-form"
           }
         },
-        "logo_image_Xw4QCd": {
-          "type": "logo_image",
-          "settings": {
-            "image": "shopify://shop_images/Nat_Form.jpg",
-            "link": ""
-          }
-        },
-        "logo_image_NRgL7T": {
-          "type": "logo_image",
-          "settings": {
-            "image": "shopify://shop_images/Nat_Form.jpg",
-            "link": ""
-          }
-        },
-        "logo_image_rmi8TT": {
-          "type": "logo_image",
-          "settings": {
-            "image": "shopify://shop_images/Nat_Form.jpg",
-            "link": ""
-          }
-        },
         "logo5": {
           "type": "logo_image",
           "settings": {
@@ -82,9 +61,6 @@
         "logo2",
         "logo3",
         "logo4",
-        "logo_image_Xw4QCd",
-        "logo_image_NRgL7T",
-        "logo_image_rmi8TT",
         "logo5"
       ],
       "custom_css": [
