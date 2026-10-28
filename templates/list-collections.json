@@ -24,14 +24,14 @@
           "type": "logo_image",
           "settings": {
             "image": "shopify://shop_images/store-locator-mobile.jpg",
-            "link": ""
+            "link": "https://heyday.ph/"
           }
         },
         "logo2": {
           "type": "logo_image",
           "settings": {
             "image": "shopify://shop_images/Vplab.jpg",
-            "link": ""
+            "link": "https://heyday.ph/pages/vplab"
           }
         },
         "logo3": {
@@ -45,6 +45,27 @@
           "type": "logo_image",
           "settings": {
             "image": "shopify://shop_images/Nat_Form.jpg",
+            "link": "https://heyday.ph/pages/nat-and-form"
+          }
+        },
+        "logo_image_Xw4QCd": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify://shop_images/Nat_Form.jpg",
+            "link": ""
+          }
+        },
+        "logo_image_NRgL7T": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify://shop_images/Nat_Form.jpg",
+            "link": ""
+          }
+        },
+        "logo_image_rmi8TT": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify://shop_images/Nat_Form.jpg",
             "link": ""
           }
         },
@@ -52,7 +73,7 @@
           "type": "logo_image",
           "settings": {
             "image": "shopify://shop_images/Ultra_Vit.jpg",
-            "link": ""
+            "link": "https://heyday.ph/pages/ultravit-landing-page"
           }
         }
       },
@@ -61,15 +82,18 @@
         "logo2",
         "logo3",
         "logo4",
+        "logo_image_Xw4QCd",
+        "logo_image_NRgL7T",
+        "logo_image_rmi8TT",
         "logo5"
       ],
       "custom_css": [
-        ".new-grid{justify-content: center;}"
+        ".new-grid {justify-content: center;}"
       ],
       "settings": {
-        "title": "Our brands",
+        "title": "",
         "heading_size": "h2",
-        "heading_position": "center",
+        "heading_position": "left",
         "divider": false
       }
     }
