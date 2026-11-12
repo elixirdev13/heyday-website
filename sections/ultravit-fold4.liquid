@@ -164,11 +164,20 @@
             {% endif %}
           </span>
           
-          {% comment %} View-only catalog: add to cart replaced with View Product. {% endcomment %}
           {% if product != blank %}
-            <a href="{{ product.url }}" class="add-btn">View Product</a>
+            {% form 'product', product %}
+              <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+              
+              <button type="submit" class="add-btn" {% unless product.available %}disabled{% endunless %}>
+                {% if product.available %}
+                  Add to Cart
+                {% else %}
+                  Sold Out
+                {% endif %}
+              </button>
+            {% endform %}
           {% else %}
-            <a href="#" class="add-btn">View Product</a>
+            <button class="add-btn">Add to Cart</button>
           {% endif %}
         </div>
 
