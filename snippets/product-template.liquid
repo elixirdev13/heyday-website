@@ -245,9 +245,15 @@
                       </div>
 
                     {%- when 'icons_block' -%}
+                    {%- comment -%}
+                      Hidden on all product pages per request.
+                      To restore, uncomment the block below.
+                    {%- endcomment -%}
+                    {%- comment -%}
                     <div class="product-block product-block--icons" {{ block.shopify_attributes }}>
                       {%- render 'icons-block', block: block -%}
                     </div>
+                    {%- endcomment -%}
                     {%- when 'custom_info' -%}
                       {{ block.settings.custom_info }}
                     {%- when 'price' -%}
